@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Kliento's AI products: AI Receptionist, Website Chat Widget, and Email Automation Agent for small businesses." />
+  <meta name="description" content="Kliento's AI products: AI Receptionist, Website Chat Widget, and Email Automation Agent for businesses." />
   <title>Products — Kliento</title>
   <link rel="icon" href="logo.png" type="image/png" />
   <link rel="stylesheet" href="styles.css" />
@@ -13,13 +13,15 @@
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="container nav__inner">
-      <a href="index.html" class="nav__logo">
+      <a href="/" class="nav__logo">
         <img src="logo.png" alt="Kliento logo" />
       </a>
       <div class="nav__links">
-        <a href="products.html" class="nav__link active">Products</a>
-        <a href="contact.html" class="nav__link">Contact</a>
-        <a href="contact.html" class="btn btn-primary nav__cta">Get Started</a>
+        <a href="/products" class="nav__link active">Products</a>
+        <a href="/how-it-works" class="nav__link">How It Works</a>
+        <a href="/industries" class="nav__link">Industries</a>
+        <a href="/about" class="nav__link">About</a>
+        <a href="/contact" class="btn btn-primary nav__cta">Get Started</a>
       </div>
       <button class="nav__hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -29,9 +31,11 @@
 
   <!-- Mobile nav -->
   <div class="nav__mobile" id="mobileNav">
-    <a href="products.html">Products</a>
-    <a href="contact.html">Contact</a>
-    <a href="contact.html" class="btn btn-primary" style="text-align:center">Get Started</a>
+    <a href="/products">Products</a>
+    <a href="/how-it-works">How It Works</a>
+    <a href="/industries">Industries</a>
+    <a href="/about">About</a>
+    <a href="/contact" class="btn btn-primary" style="text-align:center">Get Started</a>
   </div>
 
   <!-- Page Hero -->
@@ -69,15 +73,10 @@
             <li>Delivers post-call summaries via email automatically</li>
             <li>Logs lost &amp; found reports, messages, and more</li>
           </ul>
-          <a href="contact.html" class="btn btn-primary mt-4">Get this product</a>
+          <a href="/contact" class="btn btn-primary mt-4">Get this product</a>
         </div>
-        <div class="feature-visual">
-          <div style="text-align:center">
-            <div class="feature-icon-lg">📞</div>
-            <p style="margin-top:1rem;font-size:0.875rem;color:var(--gray-500);font-weight:500">
-              Powered by Retell AI + n8n
-            </p>
-          </div>
+        <div class="feature-visual feature-visual--img">
+          <img src="images/product-receptionist.jpg" alt="AI Receptionist" />
         </div>
       </div>
 
@@ -98,15 +97,10 @@
             <li>Captures leads and qualifying information</li>
             <li>Seamless handoff to a human when needed</li>
           </ul>
-          <a href="contact.html" class="btn btn-primary mt-4">Get this product</a>
+          <a href="/contact" class="btn btn-primary mt-4">Get this product</a>
         </div>
-        <div class="feature-visual">
-          <div style="text-align:center">
-            <div class="feature-icon-lg">💬</div>
-            <p style="margin-top:1rem;font-size:0.875rem;color:var(--gray-500);font-weight:500">
-              Embeds on any website
-            </p>
-          </div>
+        <div class="feature-visual feature-visual--img">
+          <img src="images/product-chat.jpg" alt="Website AI Chat Widget" />
         </div>
       </div>
 
@@ -128,15 +122,10 @@
             <li>One-tap approve — email sends automatically</li>
             <li>You remain in full control of every message sent</li>
           </ul>
-          <a href="contact.html" class="btn btn-primary mt-4">Get this product</a>
+          <a href="/contact" class="btn btn-primary mt-4">Get this product</a>
         </div>
-        <div class="feature-visual">
-          <div style="text-align:center">
-            <div class="feature-icon-lg">✉️</div>
-            <p style="margin-top:1rem;font-size:0.875rem;color:var(--gray-500);font-weight:500">
-              Works with Gmail &amp; more
-            </p>
-          </div>
+        <div class="feature-visual feature-visual--img">
+          <img src="images/product-email.jpg" alt="Email Automation Agent" />
         </div>
       </div>
 
@@ -166,7 +155,7 @@
       <div class="cta-section">
         <h2>Not sure which product fits?</h2>
         <p>Tell us about your business and we'll recommend the right automation.</p>
-        <a href="contact.html" class="btn btn-ghost btn-lg">Talk to us →</a>
+        <a href="/contact" class="btn btn-ghost btn-lg">Talk to us →</a>
       </div>
     </div>
   </section>
@@ -174,36 +163,45 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__grid">
+      <div class="footer__grid" style="grid-template-columns:2fr 1fr 1fr 1fr">
         <div class="footer__brand">
           <div class="footer__logo">
             <img src="logo.png" alt="Kliento" />
             <span class="footer__logo-text">kliento</span>
           </div>
-          <p class="footer__tagline">AI automation for small businesses. Buffalo, NY.</p>
+          <p class="footer__tagline">AI automation for businesses. Buffalo, NY.</p>
         </div>
         <div>
           <p class="footer__col-title">Products</p>
           <div class="footer__links">
-            <a href="products.html#receptionist" class="footer__link">AI Receptionist</a>
-            <a href="products.html#chat" class="footer__link">Website AI Widget</a>
-            <a href="products.html#email" class="footer__link">Email Automation</a>
+            <a href="/products#receptionist" class="footer__link">AI Receptionist</a>
+            <a href="/products#chat" class="footer__link">Website AI Widget</a>
+            <a href="/products#email" class="footer__link">Email Automation</a>
           </div>
         </div>
         <div>
           <p class="footer__col-title">Company</p>
           <div class="footer__links">
-            <a href="contact.html" class="footer__link">Contact</a>
-            <a href="privacy-policy.html" class="footer__link">Privacy Policy</a>
-            <a href="terms.html" class="footer__link">Terms of Service</a>
+            <a href="/about" class="footer__link">About</a>
+            <a href="/how-it-works" class="footer__link">How It Works</a>
+            <a href="/industries" class="footer__link">Industries</a>
+            <a href="/faq" class="footer__link">FAQ</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__col-title">Legal</p>
+          <div class="footer__links">
+            <a href="/contact" class="footer__link">Contact</a>
+            <a href="/privacy-policy" class="footer__link">Privacy Policy</a>
+            <a href="/terms" class="footer__link">Terms of Service</a>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
         <span>© 2025 Kliento LLC. All rights reserved.</span>
         <div class="footer__legal-links">
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms.html">Terms</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms">Terms</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Frequently asked questions about Kliento's AI automation products for businesses." />
+  <title>FAQ — Kliento</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .faq-group { margin-bottom: 3rem; }
+    .faq-group__title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .faq-item__q {
+      width: 100%;
+      text-align: left;
+      padding: 1.5rem 0;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+    .faq-item__q:hover { color: var(--gray-700); }
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gray-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--gray-500);
+      transition: all 0.2s;
+    }
+    .faq-item.open .faq-icon {
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+    }
+    .faq-item__a {
+      display: none;
+      padding-bottom: 1.5rem;
+      font-size: 0.9375rem;
+      color: var(--gray-500);
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .faq-item.open .faq-item__a { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="/" class="nav__logo">
+        <img src="logo.png" alt="Kliento logo" />
+      </a>
+      <div class="nav__links">
+        <a href="/products" class="nav__link">Products</a>
+        <a href="/how-it-works" class="nav__link">How It Works</a>
+        <a href="/industries" class="nav__link">Industries</a>
+        <a href="/about" class="nav__link">About</a>
+        <a href="/contact" class="btn btn-primary nav__cta">Get Started</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="nav__mobile" id="mobileNav">
+    <a href="/products">Products</a>
+    <a href="/how-it-works">How It Works</a>
+    <a href="/industries">Industries</a>
+    <a href="/about">About</a>
+    <a href="/contact" class="btn btn-primary" style="text-align:center">Get Started</a>
+  </div>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="container">
+      <p class="label mb-3">FAQ</p>
+      <h1 class="h1">Questions we hear<br/>all the time.</h1>
+      <p class="body-lg mt-2 prose">
+        Everything you need to know before getting started. Don't see your question?
+        <a href="/contact" style="color:var(--black);text-decoration:underline;text-underline-offset:3px">Just ask us directly.</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container" style="max-width:800px">
+
+      <!-- General -->
+      <div class="faq-group">
+        <p class="faq-group__title">General</p>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            What exactly is Kliento?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            Kliento is an AI automation company based in Buffalo, NY. We build custom AI systems
+            that keep businesses reachable around the clock — AI voice receptionists that answer
+            phone calls, AI chat widgets for websites, and email automation agents. Everything we
+            build is tailored to your specific operation. We're not a SaaS platform you log into —
+            we build and manage the system for you.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            Who is Kliento for?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            Any business that communicates with customers by phone, email, or website. Our clients
+            range from independent contractors to multi-million dollar operations — if missed calls,
+            unanswered emails, or slow response times are costing you clients, Kliento can fix that.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            Do I need to be tech-savvy to use Kliento?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            Not at all. We handle all the technical setup, configuration, and maintenance.
+            You share information about your business, review the system before it goes live,
+            and then use it — there's no dashboard to learn, no code to touch. If something
+            needs adjusting, you contact us and we handle it.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            Where is Kliento based?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            We're headquartered in Buffalo, New York. We serve businesses across the
+            United States — location doesn't matter for our services. Everything is set up
+            and managed remotely.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Products -->
+      <div class="faq-group">
+        <p class="faq-group__title">Products</p>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            Will the AI voice receptionist sound robotic?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            No. Modern AI voice technology has advanced dramatically — today's voices sound
+            natural, warm, and conversational. We select voices that match your brand's tone
+            and configure the AI to speak the way your business communicates. Most callers
+            won't be able to tell it's not a human, and many don't care once they realize
+            it's helping them effectively.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            What happens if the AI can't answer a question?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            The AI is trained to handle the vast majority of questions your callers ask.
+            For anything it doesn't know, it has two options depending on your preference:
+            transfer the call to a human staff member, or take a message and let the caller
+            know someone will follow up. Nothing gets dropped — every interaction is handled gracefully.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            Which products can I combine?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            All three. Many clients start with the AI Receptionist and add the Website Chat Widget
+            to cover both phone and web channels. The Email Automation Agent works independently
+            or alongside either. We'll recommend the right combination based on where your biggest
+            gaps are — you don't have to figure it out alone.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            What platforms and tools do you integrate with?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            We integrate with most common small business tools — Google Calendar, Outlook,
+            Gmail, most scheduling software (Acuity, Calendly, Jane App, etc.), and CRMs
+            like HubSpot and Go High Level. The Email Automation Agent works with Gmail and
+            most IMAP-compatible email providers. If you use something specific, ask us — the
+            answer is usually yes.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            Can the AI handle multiple calls at the same time?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            Yes. Unlike a human receptionist, the AI can handle unlimited simultaneous calls.
+            No busy signals, no hold queues. Every caller gets answered immediately — even
+            during your busiest hours.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Setup & Pricing -->
+      <div class="faq-group">
+        <p class="faq-group__title">Setup &amp; Pricing</p>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            How long does setup take?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            Most clients are live within 5–7 business days of signing on. The exact timeline
+            depends on the product and how quickly you can share the information we need
+            (business details, FAQs, calendar access, etc.). We've gotten clients live in as
+            few as 3 days when everything moves quickly.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            How much does it cost?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            Pricing is custom to each business — it depends on the product(s) you need,
+            your call volume, and your specific requirements. We don't publish flat rates
+            because a solo contractor has very different needs than a 10-person dental practice.
+            Contact us and we'll give you a clear, honest quote. We price to be accessible —
+            not just for businesses with large budgets.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            Is there a long-term contract?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            No long-term lock-in. We work on monthly agreements. If it's not working for you,
+            you can cancel. That said, most clients stick around — because it works.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            What's included after the system goes live?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            Ongoing support is included. When your services change, your hours shift, or you
+            want to add a new capability, we update the system. You contact us directly —
+            not a support ticket queue. We also do periodic check-ins to review performance
+            and suggest improvements.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Privacy & Security -->
+      <div class="faq-group">
+        <p class="faq-group__title">Privacy &amp; Security</p>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            Is my business data secure?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            Yes. We take data security seriously. Your business information and customer
+            interactions are handled with care — we only collect what's necessary to operate
+            your automation, we don't sell any data, and we use reputable, enterprise-grade
+            infrastructure to power our systems.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q">
+            Are customer calls recorded?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            Call logs and summaries are generated for every interaction so you can review
+            what happened. Full call recordings can be enabled or disabled based on your
+            preference and your state's recording consent laws. We'll advise you on the
+            right setup for your jurisdiction.
+          </div>
+        </div>
+
+        <div class="faq-item" style="border-bottom:none">
+          <button class="faq-item__q">
+            Do you comply with HIPAA for medical offices?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            For healthcare clients, we configure systems with HIPAA considerations in mind —
+            limiting what patient information is stored, using appropriate data handling practices,
+            and working with compliant infrastructure where required. Contact us to discuss
+            your specific compliance needs and we'll walk you through what we can and can't do.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Still have questions -->
+  <section class="section--sm section--muted">
+    <div class="container">
+      <div class="pricing-note">
+        <p class="label mb-2">Still have questions?</p>
+        <h2>Just ask us directly.</h2>
+        <p>We're a small team — you'll get a real answer from a real person, fast.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="mailto:klientohq@gmail.com" class="btn btn-primary">Email us</a>
+          <a href="tel:+17162281160" class="btn btn-outline">Call us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-section">
+        <h2>Ready to get started?</h2>
+        <p>A 30-minute call is all it takes to figure out if Kliento is right for your business.</p>
+        <a href="/contact" class="btn btn-ghost btn-lg">Book a free consultation →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid" style="grid-template-columns:2fr 1fr 1fr 1fr">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="logo.png" alt="Kliento" />
+            <span class="footer__logo-text">kliento</span>
+          </div>
+          <p class="footer__tagline">AI automation for businesses. Buffalo, NY.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Products</p>
+          <div class="footer__links">
+            <a href="/products#receptionist" class="footer__link">AI Receptionist</a>
+            <a href="/products#chat" class="footer__link">Website AI Widget</a>
+            <a href="/products#email" class="footer__link">Email Automation</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__col-title">Company</p>
+          <div class="footer__links">
+            <a href="/about" class="footer__link">About</a>
+            <a href="/how-it-works" class="footer__link">How It Works</a>
+            <a href="/industries" class="footer__link">Industries</a>
+            <a href="/faq" class="footer__link">FAQ</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__col-title">Legal</p>
+          <div class="footer__links">
+            <a href="/contact" class="footer__link">Contact</a>
+            <a href="/privacy-policy" class="footer__link">Privacy Policy</a>
+            <a href="/terms" class="footer__link">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 Kliento LLC. All rights reserved.</span>
+        <div class="footer__legal-links">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileNav');
+    btn.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item__q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-icon').textContent = '+';
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          item.querySelector('.faq-icon').textContent = '−';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
