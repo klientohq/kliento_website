@@ -1,0 +1,19 @@
+name: RW Events Sync
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gate-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch RiverWorks events API
+        run: |
+          START_DATE=$(TZ=America/New_York date +%F)
+          URL="https://buffaloriverworks.com/wp-json/tribe/events/v1/events?per_page=25&status=publish&start_date=${START_DATE}"
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          HTTP_STATUS=$(curl -sS -o response.json -w '%{http_code}' -H "User-Agent: ${UA}" "$URL")
+          echo "HTTP status: ${HTTP_STATUS}"
+          echo "First 500 chars of body:"
+          head -c 500 response.json
+          echo ""
