@@ -43,14 +43,37 @@ jobs:
           jq --arg t "$(date -u +%FT%TZ)" '. + {generated_at:$t}' response.json > data/rw-events.json
           rm -f response.json
 
+      - name: Fetch RiverWorks homepage (mirror for Sarah fetch_website)
+        run: |
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          HTTP_STATUS=$(curl -sS -o homepage.html -w '%{http_code}' -H "User-Agent: ${UA}" "https://buffaloriverworks.com/" || echo "000")
+          echo "HTTP status: ${HTTP_STATUS}"
+          HOMEPAGE_OK=no
+          if [ "$HTTP_STATUS" = "200" ] && ! grep -qi 'sgcaptcha' homepage.html && [ "$(wc -c < homepage.html)" -gt 20000 ]; then
+            HOMEPAGE_OK=yes
+            jq -Rs --arg t "$(date -u +%FT%TZ)" '{generated_at:$t, html:.}' homepage.html > data/rw-homepage.json
+            echo "Homepage mirrored ($(wc -c < homepage.html) bytes)"
+          else
+            echo "WARNING: homepage fetch failed or challenged — keeping last good mirror"
+          fi
+          echo "HOMEPAGE_OK=${HOMEPAGE_OK}" >> "$GITHUB_ENV"
+          rm -f homepage.html
+
       - name: Commit and push if changed
         run: |
-          git add data/rw-events.json
+          git add data/rw-events.json data/rw-homepage.json 2>/dev/null || git add data/rw-events.json
           if git diff --quiet --cached; then
             echo "No changes to commit"
             exit 0
           fi
           git -c user.name="rw-events-bot" -c user.email="klientohq@gmail.com" \
-            commit --author="rw-events-bot <klientohq@gmail.com>" -m "chore: rw events sync"
+            commit --author="rw-events-bot <klientohq@gmail.com>" -m "chore: rw events + homepage sync"
           git pull --rebase origin main
           git push origin main
+
+      - name: Fail run if homepage was challenged (events already committed)
+        run: |
+          if [ "${HOMEPAGE_OK}" != "yes" ]; then
+            echo "Homepage mirror did not refresh this run — failing so the repo owner is notified."
+            exit 1
+          fi
