@@ -2,11 +2,19 @@ name: RW Events Sync
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+
+permissions:
+  contents: write
 
 jobs:
-  gate-test:
+  sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Fetch RiverWorks events API
         run: |
           START_DATE=$(TZ=America/New_York date +%F)
@@ -14,6 +22,35 @@ jobs:
           UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
           HTTP_STATUS=$(curl -sS -o response.json -w '%{http_code}' -H "User-Agent: ${UA}" "$URL")
           echo "HTTP status: ${HTTP_STATUS}"
-          echo "First 500 chars of body:"
-          head -c 500 response.json
-          echo ""
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "ERROR: non-200 response"
+            head -c 500 response.json
+            exit 1
+          fi
+
+      - name: Validate JSON
+        run: |
+          if ! jq -e '.events' response.json > /dev/null; then
+            echo "ERROR: response is not valid JSON with an .events array"
+            head -c 500 response.json
+            exit 1
+          fi
+          echo "Valid: $(jq '.events | length' response.json) events"
+
+      - name: Write data/rw-events.json
+        run: |
+          mkdir -p data
+          jq --arg t "$(date -u +%FT%TZ)" '. + {generated_at:$t}' response.json > data/rw-events.json
+          rm -f response.json
+
+      - name: Commit and push if changed
+        run: |
+          git add data/rw-events.json
+          if git diff --quiet --cached; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git -c user.name="rw-events-bot" -c user.email="klientohq@gmail.com" \
+            commit --author="rw-events-bot <klientohq@gmail.com>" -m "chore: rw events sync"
+          git pull --rebase origin main
+          git push origin main
