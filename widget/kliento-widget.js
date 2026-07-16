@@ -1,443 +1,531 @@
 /*!
- * Kliento AI Chat Widget — animated mascot chat launcher
+ * Kliento AI Chat Widget — embeddable website chatbot
  * Product: Kliento LLC — Website AI Chat Widget
  * Pilot client: Buffalo RiverWorks
- *
- * Single-file embed. Drop this one script tag on any page:
- *   <script src="https://.../kliento-widget.js" defer></script>
- *
- * Optional per-site config (set BEFORE loading this script):
- *   window.KlientoWidgetConfig = {
- *     webhookUrl: "https://crivascamilo.app.n8n.cloud/webhook/riverworks-chat-widget",
- *     clientId: "riverworks",
- *     greeting: "Hi! I'm Sarah's chat twin — ask me anything about RiverWorks.",
- *     bubblePrompts: ["Ask me anything!", "Got a question about tonight's show?", "Need directions or hours?"],
- *     accentColor: "#0e6ba8",
- *     accentColor2: "#f2994a",
- *     landingSelectors: [".fh-button", ".gform_button", "#menu-item-events"],
- *     avoidSelectors: [".fh-button", ".fh-cal", ".gform_wrapper", ".gform_button", ".n2-ss-slider"],
- *     poweredByFooter: true
- *   };
  */
 (function () {
   "use strict";
 
-  // ---- Guard against double-injection (WPCode + manual footer script, theme + plugin, etc.) ----
   if (window.__klientoWidgetLoaded) return;
   window.__klientoWidgetLoaded = true;
 
-  // Don't run until <body> exists, even if the script is placed in <head> without defer.
   if (!document.body) {
     document.addEventListener("DOMContentLoaded", init);
     return;
   }
   init();
 
+  function currentScriptBase() {
+    var script = document.currentScript;
+    if (!script) {
+      var scripts = document.getElementsByTagName("script");
+      script = scripts[scripts.length - 1];
+    }
+    var src = script && script.src ? script.src : "";
+    if (!src) return "";
+    return src.slice(0, src.lastIndexOf("/") + 1);
+  }
+
+  function normalizeBase(base) {
+    if (!base) return "";
+    return /\/$/.test(base) ? base : base + "/";
+  }
+
+  function joinAssetUrl(base, path) {
+    if (!path) return "";
+    if (/^(https?:)?\/\//i.test(path) || /^data:/i.test(path) || path.charAt(0) === "/") return path;
+    return normalizeBase(base) + path.replace(/^\//, "");
+  }
+
   function init() {
+    var inferredAssetBase = normalizeBase(joinAssetUrl(currentScriptBase(), "assets/"));
+    var rawCfg = (window.KlientoWidgetConfig && typeof window.KlientoWidgetConfig === "object") ? window.KlientoWidgetConfig : {};
+    var cfg = Object.assign(
+      {
+        webhookUrl: "",
+        clientId: "riverworks",
+        title: "Buffalo RiverWorks",
+        introSubtitle: "Ask about hours, activities, events, dining, and trip planning",
+        placeholder: "How can I help you?",
+        launcherLabel: "Ask RiverWorks",
+        assetBaseUrl: inferredAssetBase,
+        logoUrl: "",
+        launcherLogoUrl: "",
+        accentColor: "#d31145",
+        accentColor2: "#ef6b83",
+        quickActions: [
+          { label: "What are your hours today?", message: "What are your hours today?" },
+          { label: "What activities are open right now?", message: "What activities are open right now?" },
+          { label: "How does parking work?", message: "How does parking work at RiverWorks?" },
+          { label: "I want to plan a group visit.", message: "I want to plan a group visit." }
+        ],
+        poweredByFooter: true,
+        storagePrefix: "klientoWidget_"
+      },
+      rawCfg
+    );
 
-  var rawCfg = (window.KlientoWidgetConfig && typeof window.KlientoWidgetConfig === "object") ? window.KlientoWidgetConfig : {};
-  var cfg = Object.assign(
-    {
-      webhookUrl: "",
-      clientId: "default",
-      greeting: "Hi! Ask me anything about this place.",
-      bubblePrompts: ["Ask me anything!", "Have a question?", "Need help finding something?"],
-      accentColor: "#0e6ba8",
-      accentColor2: "#f2994a",
-      landingSelectors: [],
-      avoidSelectors: [".fh-button", ".fh-cal", ".gform_wrapper", ".gform_button", ".n2-ss-slider", ".mfp-wrap"],
-      poweredByFooter: true,
-      storagePrefix: "klientoWidget_"
-    },
-    rawCfg
-  );
-  // Defensive coercion — a malformed config (e.g. a string instead of an array) must never crash the widget.
-  if (!Array.isArray(cfg.bubblePrompts) || !cfg.bubblePrompts.length) cfg.bubblePrompts = ["Ask me anything!"];
-  if (!Array.isArray(cfg.landingSelectors)) cfg.landingSelectors = [];
-  if (!Array.isArray(cfg.avoidSelectors)) cfg.avoidSelectors = [];
+    cfg.assetBaseUrl = normalizeBase(cfg.assetBaseUrl || inferredAssetBase);
+    cfg.logoUrl = joinAssetUrl(cfg.assetBaseUrl, cfg.logoUrl || "riverworks-chat-icon.png");
+    cfg.launcherLogoUrl = joinAssetUrl(cfg.assetBaseUrl, cfg.launcherLogoUrl || cfg.logoUrl || "riverworks-chat-icon.png");
+    cfg.quickActions = normalizeQuickActions(cfg.quickActions).slice(0, 4);
 
-  var STORAGE = {
-    dismissed: cfg.storagePrefix + cfg.clientId + "_dismissed",
-    bubbleShownAt: cfg.storagePrefix + cfg.clientId + "_bubbleShownAt",
-    sessionId: cfg.storagePrefix + cfg.clientId + "_sessionId"
-  };
+    var STORAGE = {
+      sessionId: cfg.storagePrefix + cfg.clientId + "_sessionId",
+      openedOnce: cfg.storagePrefix + cfg.clientId + "_openedOnce"
+    };
 
-  function ls(key) {
-    try { return window.localStorage.getItem(key); } catch (e) { return null; }
-  }
-  function lsSet(key, val) {
-    try { window.localStorage.setItem(key, val); } catch (e) {}
-  }
+    function ls(key) {
+      try { return window.localStorage.getItem(key); } catch (e) { return null; }
+    }
 
-  // Permanently dismissed by the user in a previous visit — don't render at all.
-  if (ls(STORAGE.dismissed) === "1") return;
+    function lsSet(key, val) {
+      try { window.localStorage.setItem(key, val); } catch (e) {}
+    }
 
-  var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var isMobile = window.matchMedia && window.matchMedia("(max-width: 760px)").matches;
+    var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // ---------------------------------------------------------------------
-  // Styles
-  // ---------------------------------------------------------------------
-  var css = "\n" +
-    ".klw-root{position:fixed;z-index:2147480000;right:24px;bottom:24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;transition:right .6s ease,bottom .6s ease,opacity .3s ease;}\n" +
-    ".klw-root.klw-hidden{opacity:0;pointer-events:none;}\n" +
-    ".klw-root.klw-yielding .klw-avatar-btn{transform:scale(.55);opacity:.35;}\n" +
-    ".klw-avatar-wrap{position:relative;width:76px;height:76px;}\n" +
-    ".klw-avatar-btn{width:76px;height:76px;border-radius:50%;border:none;padding:0;cursor:pointer;background:radial-gradient(circle at 30% 25%, #ffffff, #eaf4fb 60%);box-shadow:0 6px 18px rgba(14,107,168,.35);display:flex;align-items:center;justify-content:center;transition:transform .35s ease, opacity .35s ease;}\n" +
-    ".klw-avatar-btn:hover{transform:scale(1.06);}\n" +
-    ".klw-avatar-btn svg{width:58px;height:58px;display:block;}\n" +
-    ".klw-bob{animation:klw-bob 3.2s ease-in-out infinite;}\n" +
-    ".klw-bob-calm{animation-duration:5.5s;}\n" +
-    "@keyframes klw-bob{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-7px) rotate(-2deg);}}\n" +
-    ".klw-arm{transform-origin:70% 65%;animation:klw-wave 2.6s ease-in-out infinite;}\n" +
-    "@keyframes klw-wave{0%,100%{transform:rotate(0deg);}25%{transform:rotate(-18deg);}50%{transform:rotate(4deg);}75%{transform:rotate(-10deg);}}\n" +
-    ".klw-blink{animation:klw-blink 4.5s ease-in-out infinite;}\n" +
-    "@keyframes klw-blink{0%,92%,100%{transform:scaleY(1);}94%{transform:scaleY(.1);}96%{transform:scaleY(1);}}\n" +
-    ".klw-bubble{position:absolute;right:88px;bottom:6px;max-width:200px;background:#fff;color:#1c2b36;padding:10px 14px;border-radius:16px 16px 4px 16px;font-size:13.5px;line-height:1.35;box-shadow:0 6px 18px rgba(0,0,0,.15);opacity:0;transform:translateY(6px) scale(.96);pointer-events:none;transition:opacity .35s ease, transform .35s ease;}\n" +
-    ".klw-bubble.klw-show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;cursor:pointer;}\n" +
-    ".klw-dismiss{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:#e3e8ec;border:none;color:#5b6b76;font-size:12px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;}\n" +
-    ".klw-panel{position:fixed;z-index:2147480001;right:24px;bottom:112px;width:340px;max-width:calc(100vw - 32px);height:460px;max-height:calc(100vh - 140px);background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.25);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(.98);pointer-events:none;transition:opacity .28s ease, transform .28s ease;}\n" +
-    ".klw-panel.klw-open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}\n" +
-    ".klw-header{background:linear-gradient(135deg, var(--klw-accent), var(--klw-accent2));color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;}\n" +
-    ".klw-header svg{width:30px;height:30px;flex:none;}\n" +
-    ".klw-header-title{font-weight:600;font-size:14.5px;}\n" +
-    ".klw-header-sub{font-size:11.5px;opacity:.85;}\n" +
-    ".klw-close{margin-left:auto;background:rgba(255,255,255,.2);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:14px;}\n" +
-    ".klw-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#f6f9fb;}\n" +
-    ".klw-msg{max-width:82%;padding:9px 12px;border-radius:14px;font-size:13.5px;line-height:1.4;white-space:pre-wrap;}\n" +
-    ".klw-msg-bot{background:#fff;color:#1c2b36;align-self:flex-start;border-bottom-left-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.08);}\n" +
-    ".klw-msg-user{background:var(--klw-accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px;}\n" +
-    ".klw-typing{display:flex;gap:4px;padding:10px 12px;}\n" +
-    ".klw-typing span{width:6px;height:6px;border-radius:50%;background:#9fb0ba;animation:klw-typing 1.1s ease-in-out infinite;}\n" +
-    ".klw-typing span:nth-child(2){animation-delay:.15s;}.klw-typing span:nth-child(3){animation-delay:.3s;}\n" +
-    "@keyframes klw-typing{0%,60%,100%{opacity:.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}\n" +
-    ".klw-inputrow{display:flex;gap:8px;padding:10px;border-top:1px solid #e7edf1;background:#fff;}\n" +
-    ".klw-input{flex:1;border:1px solid #d9e2e7;border-radius:20px;padding:9px 14px;font-size:13.5px;outline:none;}\n" +
-    ".klw-input:focus{border-color:var(--klw-accent);}\n" +
-    ".klw-send{background:var(--klw-accent);border:none;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;flex:none;}\n" +
-    ".klw-footer{text-align:center;font-size:10.5px;color:#9fb0ba;padding:4px 0 8px;}\n" +
-    "@media (max-width:760px){.klw-root{right:14px;bottom:14px;}.klw-panel{right:8px;left:8px;bottom:8px;width:auto;max-width:none;height:70vh;max-height:70vh;}.klw-bubble{display:none;}}\n" +
-    "@media (prefers-reduced-motion: reduce){.klw-bob,.klw-arm,.klw-blink{animation:none !important;}}\n";
+    var css = [
+      ".klw-root{position:fixed;left:20px;bottom:20px;z-index:2147480000;font-family:'Avenir Next','Segoe UI Variable','Trebuchet MS',sans-serif;color:#23181b;}",
+      ".klw-root *{box-sizing:border-box;}",
+      ".klw-launcher-hint{position:absolute;left:4px;bottom:74px;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.98);border:1px solid rgba(184,31,52,.12);box-shadow:0 10px 24px rgba(66,15,24,.10);font-size:13px;font-weight:700;color:#5d4750;white-space:nowrap;opacity:1;transform:translateY(0);transition:opacity .26s ease,transform .26s ease;animation:klw-hint-breathe 12s ease-in-out infinite;}",
+      ".klw-root.klw-hint-hidden .klw-launcher-hint{opacity:0;transform:translateY(8px);pointer-events:none;animation:none;}",
+      "@keyframes klw-hint-breathe{0%,65%,100%{opacity:.96;transform:translateY(0);}72%{opacity:.78;transform:translateY(-2px);}84%{opacity:1;transform:translateY(0);}}",
+      ".klw-launcher{position:relative;width:60px;height:60px;border-radius:999px;border:1px solid rgba(184,31,52,.16);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 28px rgba(66,15,24,.18);transition:transform .2s ease,box-shadow .2s ease;animation:klw-launcher-pulse 3.6s ease-in-out infinite;}",
+      ".klw-launcher:hover{transform:translateY(-1px);}",
+      ".klw-launcher:focus-visible,.klw-prompt:focus-visible,.klw-close:focus-visible,.klw-send:focus-visible,.klw-input:focus-visible{outline:3px solid rgba(211,17,69,.22);outline-offset:2px;}",
+      ".klw-launcher img{width:30px;height:30px;display:block;object-fit:contain;}",
+      "@keyframes klw-launcher-pulse{0%,100%{transform:scale(1);box-shadow:0 10px 28px rgba(66,15,24,.18),0 0 0 0 rgba(211,17,69,.06);}20%{transform:scale(1.03);box-shadow:0 12px 32px rgba(66,15,24,.20),0 0 0 8px rgba(211,17,69,.10);}45%{transform:scale(1.035);box-shadow:0 14px 38px rgba(66,15,24,.22),0 0 0 14px rgba(211,17,69,.13);}70%{transform:scale(1.01);box-shadow:0 11px 30px rgba(66,15,24,.18),0 0 0 4px rgba(211,17,69,.05);}}",
+      ".klw-panel{position:fixed;left:20px;bottom:92px;width:332px;max-width:calc(100vw - 24px);height:560px;max-height:calc(100vh - 120px);background:linear-gradient(180deg,#fffdfd 0%,#fff8f9 100%);border:1px solid rgba(184,31,52,.14);border-radius:24px;box-shadow:0 18px 48px rgba(66,15,24,.14),0 4px 14px rgba(66,15,24,.08);overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;transition:opacity .24s ease,transform .24s ease;z-index:2147480001;backdrop-filter:blur(14px);}",
+      ".klw-panel.klw-open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}",
+      ".klw-header{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:rgba(255,255,255,.92);border-bottom:1px solid rgba(184,31,52,.12);}",
+      ".klw-header-main{display:flex;align-items:center;gap:10px;min-width:0;}",
+      ".klw-header-icon{width:19px;height:19px;display:block;object-fit:contain;}",
+      ".klw-header-title{font-size:17px;font-weight:700;color:#23181b;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
+      ".klw-close{width:28px;height:28px;border-radius:999px;border:1px solid rgba(0,0,0,.08);background:transparent;color:#79686d;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none;}",
+      ".klw-stage{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 14px;}",
+      ".klw-intro{flex:1;display:flex;flex-direction:column;align-items:center;padding:34px 0 0;min-height:0;overflow:auto;}",
+      ".klw-hero-glow{width:80px;height:80px;border-radius:999px;background:radial-gradient(circle at center,rgba(239,107,131,.96) 0%,rgba(211,17,69,.90) 54%,rgba(211,17,69,.24) 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(211,17,69,.26);}",
+      ".klw-hero-glow img{width:32px;height:32px;object-fit:contain;}",
+      ".klw-intro-title{margin:18px 0 0;font-size:28px;font-weight:700;letter-spacing:-.02em;color:#cf1c42;text-align:center;}",
+      ".klw-intro-sub{margin:10px 0 0;max-width:250px;font-size:14px;line-height:1.5;color:#6f5b61;text-align:center;}",
+      ".klw-prompts-wrap{width:100%;margin-top:28px;padding-bottom:10px;}",
+      ".klw-prompts-label{margin:0 0 12px;font-size:14px;font-weight:700;color:#5d4750;}",
+      ".klw-prompts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}",
+      ".klw-prompt{min-height:96px;padding:12px;border-radius:14px;border:1px solid rgba(184,31,52,.12);background:#fff;cursor:pointer;display:flex;flex-direction:column;gap:12px;justify-content:flex-start;text-align:left;color:#23181b;box-shadow:0 4px 12px rgba(66,15,24,.05);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}",
+      ".klw-prompt:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(66,15,24,.08);border-color:rgba(211,17,69,.18);}",
+      ".klw-prompt-icon{width:18px;height:18px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:rgba(211,17,69,.09);color:#d31145;flex:none;}",
+      ".klw-prompt-icon svg{width:12px;height:12px;display:block;}",
+      ".klw-prompt-text{font-size:14px;line-height:1.42;font-weight:500;}",
+      ".klw-chat{display:none;flex:1;min-height:0;flex-direction:column;padding:14px 0 0;}",
+      ".klw-chat.klw-active{display:flex;}",
+      ".klw-messages{flex:1;min-height:0;overflow:auto;padding:0 2px 6px;display:flex;flex-direction:column;gap:12px;}",
+      ".klw-bubble-user{align-self:flex-end;max-width:86%;padding:12px 14px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 4px 12px rgba(66,15,24,.06);font-size:14px;line-height:1.48;color:#23181b;white-space:pre-wrap;}",
+      ".klw-answer{border-radius:14px;background:#fdf0f3;border:1px solid rgba(200,31,59,.16);padding:14px;box-shadow:0 6px 16px rgba(66,15,24,.05);}",
+      ".klw-answer-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#a91f3b;font-size:13px;font-weight:700;}",
+      ".klw-answer-head img{width:15px;height:15px;display:block;object-fit:contain;}",
+      ".klw-answer-body{font-size:14px;line-height:1.52;color:#281c1f;white-space:pre-wrap;word-wrap:break-word;}",
+      ".klw-answer-body p{margin:0 0 8px;}",
+      ".klw-answer-body p:last-child{margin-bottom:0;}",
+      ".klw-answer-body a{color:#b3183a;text-decoration:underline;word-break:break-word;}",
+      ".klw-typing{display:inline-flex;gap:4px;align-items:center;}",
+      ".klw-typing span{width:6px;height:6px;border-radius:999px;background:#c84b63;animation:klw-typing 1s ease-in-out infinite;}",
+      ".klw-typing span:nth-child(2){animation-delay:.14s;}",
+      ".klw-typing span:nth-child(3){animation-delay:.28s;}",
+      "@keyframes klw-typing{0%,60%,100%{opacity:.35;transform:translateY(0);}30%{opacity:1;transform:translateY(-2px);}}",
+      ".klw-compose-wrap{padding:10px 0 12px;}",
+      ".klw-compose{display:flex;align-items:center;gap:8px;height:48px;padding:0 8px 0 14px;border-radius:999px;background:#fff;border:1px solid rgba(184,31,52,.12);box-shadow:0 8px 18px rgba(66,15,24,.05);}",
+      ".klw-input{flex:1;border:none;background:transparent;font:inherit;font-size:15px;color:#35262a;outline:none;resize:none;min-height:20px;max-height:92px;line-height:1.4;padding:0;margin:0;}",
+      ".klw-input::placeholder{color:#8c7780;}",
+      ".klw-send{width:32px;height:32px;border:none;border-radius:999px;background:linear-gradient(135deg,#d31145 0%,#ef6b83 100%);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;box-shadow:0 8px 18px rgba(211,17,69,.22);transition:transform .18s ease,opacity .18s ease,box-shadow .18s ease;flex:none;}",
+      ".klw-send:hover{transform:translateY(-1px);}",
+      ".klw-send:disabled{opacity:.48;cursor:not-allowed;box-shadow:none;transform:none;}",
+      ".klw-send svg{width:14px;height:14px;display:block;}",
+      ".klw-footer{padding-top:8px;text-align:center;font-size:10px;color:#9b8990;letter-spacing:.01em;}",
+      "@media (max-width:760px){.klw-root{left:16px;bottom:16px;}.klw-panel{left:12px;right:12px;bottom:88px;width:auto;max-width:none;height:min(620px,calc(100vh - 116px));}.klw-launcher-hint{display:none;}.klw-prompts{grid-template-columns:1fr;}.klw-intro-title{font-size:26px;}}",
+      "@media (prefers-reduced-motion: reduce){.klw-launcher,.klw-launcher-hint,.klw-typing span{animation:none !important;}}"
+    ].join("\n");
 
-  try {
     var styleEl = document.createElement("style");
     styleEl.setAttribute("data-kliento-widget", "1");
     styleEl.textContent = css;
     document.head.appendChild(styleEl);
-  } catch (e) { /* strict CSP blocking inline styles — widget degrades to unstyled rather than crashing the page */ }
 
-  // ---------------------------------------------------------------------
-  // Mascot SVG — simple friendly river-otter character, built to animate
-  // in parts (ear/eye/arm/tail groups keyed by class for CSS animation).
-  // ---------------------------------------------------------------------
-  var mascotSVG =
-    '<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-    '<ellipse cx="60" cy="100" rx="30" ry="8" fill="rgba(14,30,40,.08)"/>' +
-    '<g class="klw-tail"><path d="M88 78 Q108 70 104 92 Q98 84 88 86Z" fill="#8a5a34"/></g>' +
-    '<path d="M34 60 Q30 100 60 108 Q90 100 86 60 Q86 34 60 30 Q34 34 34 60Z" fill="#a2703f"/>' +
-    '<path d="M42 66 Q40 96 60 102 Q80 96 78 66 Q78 50 60 48 Q42 50 42 66Z" fill="#d8b384"/>' +
-    '<path d="M40 62 Q35 76 46 84 L46 60Z" fill="#f2994a"/>' +
-    '<path d="M80 62 Q85 76 74 84 L74 60Z" fill="#f2994a"/>' +
-    '<rect x="44" y="60" width="32" height="22" rx="8" fill="#f2994a"/>' +
-    '<g class="klw-arm"><ellipse cx="30" cy="66" rx="8" ry="14" fill="#a2703f" transform="rotate(-10 30 66)"/></g>' +
-    '<ellipse cx="90" cy="70" rx="8" ry="14" fill="#a2703f" transform="rotate(12 90 70)"/>' +
-    '<circle cx="60" cy="34" r="26" fill="#a2703f"/>' +
-    '<circle cx="60" cy="36" r="19" fill="#d8b384"/>' +
-    '<circle cx="40" cy="18" r="8" fill="#a2703f"/>' +
-    '<circle cx="80" cy="18" r="8" fill="#a2703f"/>' +
-    '<circle cx="40" cy="19" r="4" fill="#d8b384"/>' +
-    '<circle cx="80" cy="19" r="4" fill="#d8b384"/>' +
-    '<g class="klw-blink">' +
-    '<ellipse cx="51" cy="33" rx="4.2" ry="5" fill="#1c2b36"/>' +
-    '<ellipse cx="69" cy="33" rx="4.2" ry="5" fill="#1c2b36"/>' +
-    '<circle cx="52.3" cy="31.3" r="1.2" fill="#fff"/>' +
-    '<circle cx="70.3" cy="31.3" r="1.2" fill="#fff"/>' +
-    "</g>" +
-    '<ellipse cx="60" cy="42" rx="4" ry="3" fill="#1c2b36"/>' +
-    '<path d="M52 47 Q60 52 68 47" stroke="#1c2b36" stroke-width="2" fill="none" stroke-linecap="round"/>' +
-    "</svg>";
+    var root = document.createElement("div");
+    root.className = "klw-root" + (ls(STORAGE.openedOnce) === "1" ? " klw-hint-hidden" : "");
 
-  var mascotSVGHeader = mascotSVG.replace('viewBox="0 0 120 120"', 'viewBox="0 0 120 120" style="filter:drop-shadow(0 1px 1px rgba(0,0,0,.15))"');
+    var hint = document.createElement("div");
+    hint.className = "klw-launcher-hint";
+    hint.textContent = cfg.launcherLabel;
 
-  // ---------------------------------------------------------------------
-  // DOM scaffold
-  // ---------------------------------------------------------------------
-  var root = document.createElement("div");
-  root.className = "klw-root";
-  root.style.setProperty("--klw-accent", cfg.accentColor);
-  root.style.setProperty("--klw-accent2", cfg.accentColor2);
+    var launcher = document.createElement("button");
+    launcher.type = "button";
+    launcher.className = "klw-launcher";
+    launcher.setAttribute("aria-label", "Open Buffalo RiverWorks chat");
+    launcher.innerHTML = '<img alt="" />';
+    launcher.querySelector("img").src = cfg.launcherLogoUrl;
 
-  var avatarWrap = document.createElement("div");
-  avatarWrap.className = "klw-avatar-wrap";
+    root.appendChild(hint);
+    root.appendChild(launcher);
+    document.body.appendChild(root);
 
-  var avatarBtn = document.createElement("button");
-  avatarBtn.className = "klw-avatar-btn" + (prefersReducedMotion ? "" : " klw-bob");
-  avatarBtn.setAttribute("aria-label", "Open chat");
-  avatarBtn.innerHTML = mascotSVG;
+    var panel = document.createElement("div");
+    panel.className = "klw-panel";
+    panel.setAttribute("role", "dialog");
+    panel.setAttribute("aria-modal", "true");
+    panel.setAttribute("aria-label", cfg.title);
 
-  var bubble = document.createElement("div");
-  bubble.className = "klw-bubble";
-  var bubbleText = document.createElement("span");
-  bubbleText.textContent = cfg.bubblePrompts[0] || "Ask me anything!";
-  var bubbleDismiss = document.createElement("button");
-  bubbleDismiss.className = "klw-dismiss";
-  bubbleDismiss.setAttribute("aria-label", "Don't show this again");
-  bubbleDismiss.textContent = "✕";
-  bubble.appendChild(bubbleText);
-  bubble.appendChild(bubbleDismiss);
+    var header = document.createElement("div");
+    header.className = "klw-header";
+    header.innerHTML =
+      '<div class="klw-header-main">' +
+      '<img class="klw-header-icon" alt="" />' +
+      '<div class="klw-header-title"></div>' +
+      "</div>";
+    header.querySelector(".klw-header-icon").src = cfg.logoUrl;
+    header.querySelector(".klw-header-title").textContent = cfg.title;
 
-  avatarWrap.appendChild(bubble);
-  avatarWrap.appendChild(avatarBtn);
-  root.appendChild(avatarWrap);
-  document.body.appendChild(root);
+    var closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.className = "klw-close";
+    closeBtn.setAttribute("aria-label", "Close chat");
+    closeBtn.textContent = "×";
+    header.appendChild(closeBtn);
+    panel.appendChild(header);
 
-  // ---- Chat panel ----
-  var panel = document.createElement("div");
-  panel.className = "klw-panel";
-  panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-modal", "true");
-  panel.setAttribute("aria-label", "Chat with RiverWorks");
-  panel.style.setProperty("--klw-accent", cfg.accentColor);
-  panel.style.setProperty("--klw-accent2", cfg.accentColor2);
-  panel.innerHTML =
-    '<div class="klw-header">' + mascotSVGHeader +
-    '<div><div class="klw-header-title">Ask RiverWorks</div><div class="klw-header-sub">Usually replies instantly</div></div>' +
-    '<button class="klw-close" aria-label="Close chat">✕</button>' +
-    "</div>" +
-    '<div class="klw-messages" id="klw-messages" role="log" aria-live="polite"></div>' +
-    '<div class="klw-inputrow">' +
-    '<input class="klw-input" id="klw-input" type="text" placeholder="Type a question…" autocomplete="off" />' +
-    '<button class="klw-send" id="klw-send" aria-label="Send">➤</button>' +
-    "</div>" +
-    (cfg.poweredByFooter ? '<div class="klw-footer">Powered by Kliento AI</div>' : "");
-  document.body.appendChild(panel);
+    var stage = document.createElement("div");
+    stage.className = "klw-stage";
 
-  var messagesEl = panel.querySelector("#klw-messages");
-  var inputEl = panel.querySelector("#klw-input");
-  var sendBtn = panel.querySelector("#klw-send");
-  var closeBtn = panel.querySelector(".klw-close");
+    var introView = document.createElement("div");
+    introView.className = "klw-intro";
+    introView.innerHTML =
+      '<div class="klw-hero-glow"><img alt="" /></div>' +
+      '<h2 class="klw-intro-title"></h2>' +
+      '<p class="klw-intro-sub"></p>' +
+      '<div class="klw-prompts-wrap">' +
+      '<p class="klw-prompts-label">Quick prompts:</p>' +
+      '<div class="klw-prompts"></div>' +
+      "</div>";
+    introView.querySelector(".klw-hero-glow img").src = cfg.logoUrl;
+    introView.querySelector(".klw-intro-title").textContent = cfg.title;
+    introView.querySelector(".klw-intro-sub").textContent = cfg.introSubtitle;
+    stage.appendChild(introView);
 
-  function addMessage(text, who) {
-    var m = document.createElement("div");
-    m.className = "klw-msg " + (who === "user" ? "klw-msg-user" : "klw-msg-bot");
-    m.textContent = text;
-    messagesEl.appendChild(m);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
+    var chatView = document.createElement("div");
+    chatView.className = "klw-chat";
+    var messagesEl = document.createElement("div");
+    messagesEl.className = "klw-messages";
+    messagesEl.setAttribute("role", "log");
+    messagesEl.setAttribute("aria-live", "polite");
+    chatView.appendChild(messagesEl);
+    stage.appendChild(chatView);
 
-  function showTyping() {
-    var t = document.createElement("div");
-    t.className = "klw-typing";
-    t.id = "klw-typing-indicator";
-    t.innerHTML = "<span></span><span></span><span></span>";
-    messagesEl.appendChild(t);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }
-  function hideTyping() {
-    var t = document.getElementById("klw-typing-indicator");
-    if (t) t.remove();
-  }
+    var composeWrap = document.createElement("div");
+    composeWrap.className = "klw-compose-wrap";
+    composeWrap.innerHTML =
+      '<div class="klw-compose">' +
+      '<textarea class="klw-input" rows="1" aria-label="Message Buffalo RiverWorks"></textarea>' +
+      '<button class="klw-send" type="button" aria-label="Send">' +
+      '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+      '<path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>' +
+      '<path d="m12 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>' +
+      "</svg></button></div>";
 
-  var sessionIdMemo = null;
-  function sessionId() {
-    if (sessionIdMemo) return sessionIdMemo;
-    var id = ls(STORAGE.sessionId);
-    if (!id) {
-      id = "klw_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10);
-      lsSet(STORAGE.sessionId, id);
+    var inputEl = composeWrap.querySelector(".klw-input");
+    var sendBtn = composeWrap.querySelector(".klw-send");
+    inputEl.placeholder = cfg.placeholder;
+    stage.appendChild(composeWrap);
+
+    if (cfg.poweredByFooter) {
+      var footer = document.createElement("div");
+      footer.className = "klw-footer";
+      footer.textContent = "Powered by Kliento AI";
+      stage.appendChild(footer);
     }
-    sessionIdMemo = id; // survives even if localStorage is unavailable (private browsing)
-    return id;
-  }
 
-  var panelOpened = false;
-  var widgetDismissed = false;
-  function openPanel() {
-    panel.classList.add("klw-open");
-    bubble.classList.remove("klw-show");
-    if (!panelOpened) {
-      panelOpened = true;
-      addMessage(cfg.greeting, "bot");
+    panel.appendChild(stage);
+    document.body.appendChild(panel);
+
+    renderPromptCards();
+
+    var state = {
+      conversation: [],
+      loading: false,
+      panelOpen: false,
+      sessionId: null,
+      lastFocused: null
+    };
+
+    function normalizeQuickActions(actions) {
+      if (!Array.isArray(actions)) return [];
+      var normalized = [];
+      for (var i = 0; i < actions.length; i++) {
+        var action = actions[i];
+        if (!action || typeof action !== "object") continue;
+        if (typeof action.label !== "string" || typeof action.message !== "string") continue;
+        normalized.push({
+          label: action.label.trim(),
+          message: action.message.trim()
+        });
+      }
+      return normalized;
     }
-    setTimeout(function () { inputEl.focus(); }, 250);
-  }
-  function closePanel() {
-    panel.classList.remove("klw-open");
-    avatarBtn.focus();
-  }
 
-  avatarBtn.addEventListener("click", openPanel);
-  bubble.addEventListener("click", function (e) {
-    if (e.target === bubbleDismiss) return;
-    openPanel();
-  });
-  closeBtn.addEventListener("click", closePanel);
-  panel.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closePanel();
-  });
-  bubbleDismiss.addEventListener("click", function (e) {
-    e.stopPropagation();
-    widgetDismissed = true;
-    lsSet(STORAGE.dismissed, "1");
-    root.classList.add("klw-hidden");
-    mo.disconnect();
-    setTimeout(function () { root.remove(); panel.remove(); }, 350);
-  });
+    function sessionId() {
+      if (state.sessionId) return state.sessionId;
+      var id = ls(STORAGE.sessionId);
+      if (!id) {
+        id = "klw_" + Date.now() + "_" + Math.random().toString(36).slice(2, 10);
+        lsSet(STORAGE.sessionId, id);
+      }
+      state.sessionId = id;
+      return id;
+    }
 
-  function sendMessage() {
-    var text = inputEl.value.trim();
-    if (!text) return;
-    addMessage(text, "user");
-    inputEl.value = "";
-    showTyping();
+    function promptIcon() {
+      return (
+        '<span class="klw-prompt-icon">' +
+        '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+        '<path d="M12 4v4M12 16v4M4 12h4M16 12h4M6.9 6.9l2.8 2.8M14.3 14.3l2.8 2.8M17.1 6.9l-2.8 2.8M9.7 14.3l-2.8 2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>' +
+        "</svg></span>"
+      );
+    }
 
-    if (!cfg.webhookUrl) {
+    function renderPromptCards() {
+      var promptsEl = introView.querySelector(".klw-prompts");
+      promptsEl.innerHTML = "";
+      for (var i = 0; i < cfg.quickActions.length; i++) {
+        (function (action) {
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "klw-prompt";
+          btn.innerHTML = promptIcon() + '<div class="klw-prompt-text"></div>';
+          btn.querySelector(".klw-prompt-text").textContent = action.label;
+          btn.addEventListener("click", function () {
+            openPanel();
+            sendMessageText(action.message);
+          });
+          promptsEl.appendChild(btn);
+        })(cfg.quickActions[i]);
+      }
+    }
+
+    function pageContext() {
+      var headingEl = document.querySelector("h1");
+      var heading = headingEl ? headingEl.textContent || "" : "";
+      return {
+        url: window.location.href,
+        title: document.title || "",
+        path: window.location.pathname || "/",
+        heading: heading.trim().slice(0, 160)
+      };
+    }
+
+    function updateComposerState() {
+      sendBtn.disabled = state.loading || !inputEl.value.trim();
+    }
+
+    function autoResizeInput() {
+      inputEl.style.height = "auto";
+      inputEl.style.height = Math.min(inputEl.scrollHeight, 92) + "px";
+    }
+
+    function setView() {
+      var showChat = state.conversation.length > 0 || state.loading;
+      introView.style.display = showChat ? "none" : "flex";
+      chatView.classList.toggle("klw-active", showChat);
+      if (showChat) {
+        setTimeout(function () {
+          messagesEl.scrollTop = messagesEl.scrollHeight;
+        }, 0);
+      }
+    }
+
+    function renderFormattedText(container, text) {
+      var lines = String(text || "").split(/\n/);
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        var p = document.createElement("p");
+        appendInlineContent(p, line);
+        container.appendChild(p);
+      }
+    }
+
+    function appendInlineContent(parent, text) {
+      var pattern = /\[([^\]]+)\]\(((?:https?:\/\/|mailto:|tel:)[^\s)]+)\)|(https?:\/\/[^\s<]+|mailto:[^\s<]+|tel:[^\s<]+)/g;
+      var lastIndex = 0;
+      var match;
+      while ((match = pattern.exec(text))) {
+        if (match.index > lastIndex) {
+          parent.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+        }
+        var label = match[1] || match[3];
+        var href = match[2] || match[3];
+        var link = document.createElement("a");
+        link.href = href;
+        link.textContent = label;
+        if (/^https?:/i.test(href)) {
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        }
+        parent.appendChild(link);
+        lastIndex = pattern.lastIndex;
+      }
+      if (lastIndex < text.length) {
+        parent.appendChild(document.createTextNode(text.slice(lastIndex)));
+      }
+    }
+
+    function renderMessages() {
+      messagesEl.innerHTML = "";
+
+      for (var i = 0; i < state.conversation.length; i++) {
+        var entry = state.conversation[i];
+        if (entry.role === "user") {
+          var userBubble = document.createElement("div");
+          userBubble.className = "klw-bubble-user";
+          userBubble.textContent = entry.text;
+          messagesEl.appendChild(userBubble);
+        } else {
+          var answer = document.createElement("div");
+          answer.className = "klw-answer";
+          answer.innerHTML =
+            '<div class="klw-answer-head"><img alt="" /><span></span></div>' +
+            '<div class="klw-answer-body"></div>';
+          answer.querySelector(".klw-answer-head img").src = cfg.logoUrl;
+          answer.querySelector(".klw-answer-head span").textContent = cfg.title;
+          renderFormattedText(answer.querySelector(".klw-answer-body"), entry.text);
+          messagesEl.appendChild(answer);
+        }
+      }
+
+      if (state.loading) {
+        var typing = document.createElement("div");
+        typing.className = "klw-answer";
+        typing.innerHTML =
+          '<div class="klw-answer-head"><img alt="" /><span></span></div>' +
+          '<div class="klw-answer-body"><div class="klw-typing"><span></span><span></span><span></span></div></div>';
+        typing.querySelector(".klw-answer-head img").src = cfg.logoUrl;
+        typing.querySelector(".klw-answer-head span").textContent = cfg.title;
+        messagesEl.appendChild(typing);
+      }
+
+      setView();
+    }
+
+    function openPanel() {
+      state.lastFocused = document.activeElement;
+      state.panelOpen = true;
+      panel.classList.add("klw-open");
+      root.classList.add("klw-hint-hidden");
+      lsSet(STORAGE.openedOnce, "1");
+      setView();
       setTimeout(function () {
-        hideTyping();
-        addMessage("(Widget not connected to a backend yet — set webhookUrl in KlientoWidgetConfig.)", "bot");
-      }, 500);
-      return;
+        autoResizeInput();
+        inputEl.focus();
+      }, 50);
     }
 
-    if (typeof fetch !== "function") {
-      hideTyping();
-      addMessage("Sorry, this browser can't connect to chat right now.", "bot");
-      return;
+    function closePanel() {
+      state.panelOpen = false;
+      panel.classList.remove("klw-open");
+      if (state.lastFocused && typeof state.lastFocused.focus === "function") {
+        state.lastFocused.focus();
+      } else {
+        launcher.focus();
+      }
     }
 
-    try {
+    function replyTextFromPayload(data) {
+      if (!data || typeof data !== "object") return "";
+      return data.reply || data.message || data.answer || data.text || "";
+    }
+
+    function sendMessageText(text) {
+      var trimmed = String(text || "").trim();
+      if (!trimmed || state.loading) return;
+      state.conversation.push({ role: "user", text: trimmed });
+      state.loading = true;
+      inputEl.value = "";
+      autoResizeInput();
+      updateComposerState();
+      renderMessages();
+
+      if (!cfg.webhookUrl || typeof fetch !== "function") {
+        setTimeout(function () {
+          state.loading = false;
+          state.conversation.push({
+            role: "assistant",
+            text: "The local chat backend is not connected yet."
+          });
+          updateComposerState();
+          renderMessages();
+        }, 250);
+        return;
+      }
+
       fetch(cfg.webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId: sessionId(), message: text, clientId: cfg.clientId, page: window.location.href })
+        body: JSON.stringify({
+          sessionId: sessionId(),
+          message: trimmed,
+          clientId: cfg.clientId,
+          page: pageContext()
+        })
       })
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          hideTyping();
-          addMessage((data && (data.reply || data.message)) || "Sorry, I didn't catch that — could you rephrase?", "bot");
+        .then(function (response) {
+          return response.text().then(function (bodyText) {
+            return { ok: response.ok, bodyText: bodyText || "" };
+          });
+        })
+        .then(function (result) {
+          var payload = {};
+          try {
+            payload = result.bodyText ? JSON.parse(result.bodyText) : {};
+          } catch (e) {
+            payload = { reply: result.bodyText };
+          }
+          state.loading = false;
+          state.conversation.push({
+            role: "assistant",
+            text: replyTextFromPayload(payload) || "Sorry, I didn’t catch that. Could you rephrase?"
+          });
+          updateComposerState();
+          renderMessages();
         })
         .catch(function () {
-          hideTyping();
-          addMessage("Sorry, I'm having trouble connecting right now. Please try again in a moment.", "bot");
+          state.loading = false;
+          state.conversation.push({
+            role: "assistant",
+            text: "Sorry, I’m having trouble connecting right now. Please try again in a moment."
+          });
+          updateComposerState();
+          renderMessages();
         });
-    } catch (e) {
-      hideTyping();
-      addMessage("Sorry, I'm having trouble connecting right now. Please try again in a moment.", "bot");
     }
-  }
-  sendBtn.addEventListener("click", sendMessage);
-  inputEl.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" && !e.isComposing) sendMessage();
-  });
 
-  // ---------------------------------------------------------------------
-  // Speech-bubble frequency cap: show once per session, back off after
-  // dismissal/interaction, never loop forever.
-  // ---------------------------------------------------------------------
-  var lastShown = parseInt(ls(STORAGE.bubbleShownAt) || "0", 10);
-  var hoursSinceShown = (Date.now() - lastShown) / 36e5;
-  if (!panelOpened && hoursSinceShown > 20) {
-    setTimeout(function () {
-      if (!panelOpened && !widgetDismissed) {
-        bubble.classList.add("klw-show");
-        lsSet(STORAGE.bubbleShownAt, String(Date.now()));
-        setTimeout(function () { bubble.classList.remove("klw-show"); }, 9000);
+    launcher.addEventListener("click", openPanel);
+    closeBtn.addEventListener("click", closePanel);
+    panel.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closePanel();
+    });
+    sendBtn.addEventListener("click", function () {
+      sendMessageText(inputEl.value);
+    });
+    inputEl.addEventListener("input", function () {
+      autoResizeInput();
+      updateComposerState();
+    });
+    inputEl.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+        e.preventDefault();
+        sendMessageText(inputEl.value);
       }
-    }, 3200);
+    });
+
+    autoResizeInput();
+    updateComposerState();
+    renderMessages();
   }
-
-  // ---------------------------------------------------------------------
-  // Idle "alive" drift: desktop only. Roams to a small set of intentional
-  // landing spots (real DOM anchors when available, corner fallbacks
-  // otherwise), avoiding known CTA/booking elements. Mobile stays docked.
-  // Energy decays from lively -> calm after ~15s if untouched.
-  // ---------------------------------------------------------------------
-  if (!isMobile && !prefersReducedMotion) {
-    var energetic = true;
-    setTimeout(function () {
-      energetic = false;
-      avatarBtn.classList.add("klw-bob-calm");
-    }, 15000);
-
-    function getCorners() {
-      // Computed fresh each call so resizing the viewport doesn't leave stale/off-screen spots.
-      return [
-        { right: 24, bottom: 24 },
-        { right: 24, bottom: window.innerHeight * 0.4 },
-        { right: window.innerWidth * 0.3, bottom: 24 }
-      ];
-    }
-
-    function elementOverlapsAvoidZone(rect) {
-      for (var i = 0; i < cfg.avoidSelectors.length; i++) {
-        var els = document.querySelectorAll(cfg.avoidSelectors[i]);
-        for (var j = 0; j < els.length; j++) {
-          var r = els[j].getBoundingClientRect();
-          if (r.width === 0 || r.height === 0) continue;
-          var overlap = !(rect.right < r.left - 20 || rect.left > r.right + 20 || rect.bottom < r.top - 20 || rect.top > r.bottom + 20);
-          if (overlap) return true;
-        }
-      }
-      return false;
-    }
-
-    function pickLandingSpot() {
-      // Try a configured real DOM anchor first.
-      for (var i = 0; i < cfg.landingSelectors.length; i++) {
-        var el = document.querySelector(cfg.landingSelectors[i]);
-        if (el) {
-          var r = el.getBoundingClientRect();
-          if (r.width > 0 && r.top > 80 && r.top < window.innerHeight - 140) {
-            var right = Math.max(16, window.innerWidth - r.right + 20);
-            var bottom = Math.max(16, window.innerHeight - r.bottom + 30);
-            var candidateRect = { left: window.innerWidth - right - 76, right: window.innerWidth - right, top: window.innerHeight - bottom - 76, bottom: window.innerHeight - bottom };
-            if (!elementOverlapsAvoidZone(candidateRect)) return { right: right, bottom: bottom };
-          }
-        }
-      }
-      // Fallback corner, skipped if it overlaps a known avoid-zone element.
-      var corners = getCorners();
-      for (var c = 0; c < corners.length; c++) {
-        var spot = corners[c];
-        var rect2 = { left: window.innerWidth - spot.right - 76, right: window.innerWidth - spot.right, top: window.innerHeight - spot.bottom - 76, bottom: window.innerHeight - spot.bottom };
-        if (!elementOverlapsAvoidZone(rect2)) return spot;
-      }
-      return { right: 24, bottom: 24 };
-    }
-
-    function drift() {
-      if (widgetDismissed) return;
-      if (panel.classList.contains("klw-open")) return scheduleDrift();
-      var spot = pickLandingSpot();
-      root.style.right = spot.right + "px";
-      root.style.bottom = spot.bottom + "px";
-      scheduleDrift();
-    }
-    function scheduleDrift() {
-      if (widgetDismissed) return;
-      setTimeout(drift, energetic ? 7000 : 16000);
-    }
-    scheduleDrift();
-  }
-
-  // ---------------------------------------------------------------------
-  // Yield to modals/overlays: FareHarbor Lightframe, Enfold Magnific
-  // Popup, Depicter popups. Shrink out of the way rather than compete
-  // for z-index, then restore once the overlay closes.
-  // ---------------------------------------------------------------------
-  var overlaySelectors = ".mfp-wrap, .mfp-ready, [class*='depicter-popup'], [id*='fareharbor'], .fh-lightframe, .fh-cal-wrap";
-  function checkOverlays() {
-    var found = false;
-    try { found = !!document.querySelector(overlaySelectors); } catch (e) {}
-    root.classList.toggle("klw-yielding", found);
-  }
-  var mo = new MutationObserver(function () { checkOverlays(); });
-  mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["class", "style"] });
-  checkOverlays();
-
-  // Pause rAF-driven CSS animations when tab is hidden (battery/perf).
-  document.addEventListener("visibilitychange", function () {
-    root.style.animationPlayState = document.hidden ? "paused" : "running";
-  });
-  } // end init()
 })();
