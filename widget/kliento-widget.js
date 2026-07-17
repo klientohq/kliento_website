@@ -1,7 +1,9 @@
 /*!
  * Kliento AI Chat Widget — embeddable website chatbot
- * Product: Kliento LLC — Website AI Chat Widget
- * Pilot client: Buffalo RiverWorks
+ * Product: Kliento LLC — Website AI Chat Widget (white-label)
+ * v3 — fully brandable: every color is derived from cfg.accentColor / accentColor2.
+ * Example client baked in as defaults: Buffalo RiverWorks. Swap the config block to rebrand.
+ * Docs + per-client config: Products/Widget/Widget Live/client-kit/
  */
 (function () {
   "use strict";
@@ -37,29 +39,97 @@
     return normalizeBase(base) + path.replace(/^\//, "");
   }
 
+  // ---- Theming: turn one brand color into the whole widget palette ----
+  function hexToRgb(hex) {
+    var h = String(hex || "").trim().replace(/^#/, "");
+    if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+    if (!/^[0-9a-fA-F]{6}$/.test(h)) return null;
+    var n = parseInt(h, 16);
+    return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+  }
+
+  function rgba(c, a) {
+    return "rgba(" + c.r + "," + c.g + "," + c.b + "," + a + ")";
+  }
+
+  function scaleRgb(c, f) {
+    return {
+      r: Math.max(0, Math.min(255, Math.round(c.r * f))),
+      g: Math.max(0, Math.min(255, Math.round(c.g * f))),
+      b: Math.max(0, Math.min(255, Math.round(c.b * f)))
+    };
+  }
+
+  function rgbCss(c) {
+    return "rgb(" + c.r + "," + c.g + "," + c.b + ")";
+  }
+
+  function buildThemeVars(accent, accent2) {
+    var A = hexToRgb(accent) || { r: 211, g: 17, b: 69 };
+    var B = hexToRgb(accent2) || { r: 239, g: 107, b: 131 };
+    var ink = scaleRgb(A, 0.8); // darker accent for text on light tints (contrast)
+    var map = {
+      "--klw-accent": accent,
+      "--klw-accent-2": accent2,
+      "--klw-accent-ink": rgbCss(ink),
+      "--klw-a05": rgba(A, 0.05),
+      "--klw-a06": rgba(A, 0.06),
+      "--klw-a09": rgba(A, 0.09),
+      "--klw-a10": rgba(A, 0.1),
+      "--klw-a12": rgba(A, 0.12),
+      "--klw-a13": rgba(A, 0.13),
+      "--klw-a14": rgba(A, 0.14),
+      "--klw-a16": rgba(A, 0.16),
+      "--klw-a18": rgba(A, 0.18),
+      "--klw-a22": rgba(A, 0.22),
+      "--klw-a24": rgba(A, 0.24),
+      "--klw-a26": rgba(A, 0.26),
+      "--klw-a90": rgba(A, 0.9),
+      "--klw-b96": rgba(B, 0.96),
+      "--klw-answer-bg": rgba(A, 0.05)
+    };
+    var out = "";
+    for (var k in map) {
+      if (Object.prototype.hasOwnProperty.call(map, k)) out += k + ":" + map[k] + ";";
+    }
+    return ".klw-root,.klw-panel{" + out + "}";
+  }
+
   function init() {
     var inferredAssetBase = normalizeBase(joinAssetUrl(currentScriptBase(), "assets/"));
     var rawCfg = (window.KlientoWidgetConfig && typeof window.KlientoWidgetConfig === "object") ? window.KlientoWidgetConfig : {};
     var cfg = Object.assign(
       {
+        // --- Connection ---
         webhookUrl: "",
         clientId: "riverworks",
+        // --- Copy / brand text ---
         title: "Buffalo RiverWorks",
+        introTitle: "",            // defaults to title
         introSubtitle: "Ask about hours, activities, events, dining, and trip planning",
         placeholder: "How can I help you?",
         launcherLabel: "Ask RiverWorks",
+        quickPromptsLabel: "Quick prompts:",
+        // --- Logo / assets ---
         assetBaseUrl: inferredAssetBase,
-        logoUrl: "",
-        launcherLogoUrl: "",
+        logoUrl: "",               // defaults to riverworks-chat-icon.png in assets/
+        launcherLogoUrl: "",       // defaults to logoUrl
+        // --- Brand color (drives the whole theme) ---
         accentColor: "#d31145",
         accentColor2: "#ef6b83",
+        // --- Placement ---
+        position: "left",          // "left" | "right"
+        // --- Quick prompt cards (max 4) ---
         quickActions: [
           { label: "What are your hours today?", message: "What are your hours today?" },
           { label: "What activities are open right now?", message: "What activities are open right now?" },
           { label: "How does parking work?", message: "How does parking work at RiverWorks?" },
           { label: "I want to plan a group visit.", message: "I want to plan a group visit." }
         ],
+        // --- Footer ---
         poweredByFooter: true,
+        footerText: "Powered by Kliento AI",
+        // --- Storage ---
         storagePrefix: "klientoWidget_"
       },
       rawCfg
@@ -69,6 +139,8 @@
     cfg.logoUrl = joinAssetUrl(cfg.assetBaseUrl, cfg.logoUrl || "riverworks-chat-icon.png");
     cfg.launcherLogoUrl = joinAssetUrl(cfg.assetBaseUrl, cfg.launcherLogoUrl || cfg.logoUrl || "riverworks-chat-icon.png");
     cfg.quickActions = normalizeQuickActions(cfg.quickActions).slice(0, 4);
+    cfg.introTitle = cfg.introTitle || cfg.title;
+    var positionRight = String(cfg.position || "left").toLowerCase() === "right";
 
     var STORAGE = {
       sessionId: cfg.storagePrefix + cfg.clientId + "_sessionId",
@@ -86,63 +158,67 @@
     var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     var css = [
+      buildThemeVars(cfg.accentColor, cfg.accentColor2),
       ".klw-root{position:fixed;left:20px;bottom:20px;z-index:2147480000;font-family:'Avenir Next','Segoe UI Variable','Trebuchet MS',sans-serif;color:#23181b;}",
+      ".klw-root.klw-right{left:auto;right:20px;}",
       ".klw-root *{box-sizing:border-box;}",
-      ".klw-launcher-hint{position:absolute;left:4px;bottom:74px;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.98);border:1px solid rgba(184,31,52,.12);box-shadow:0 10px 24px rgba(66,15,24,.10);font-size:13px;font-weight:700;color:#5d4750;white-space:nowrap;opacity:1;transform:translateY(0);transition:opacity .26s ease,transform .26s ease;animation:klw-hint-breathe 12s ease-in-out infinite;}",
+      ".klw-launcher-hint{position:absolute;left:4px;bottom:74px;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.98);border:1px solid var(--klw-a12);box-shadow:0 10px 24px rgba(28,26,36,.10);font-size:13px;font-weight:700;color:#5d4750;white-space:nowrap;opacity:1;transform:translateY(0);transition:opacity .26s ease,transform .26s ease;animation:klw-hint-breathe 12s ease-in-out infinite;}",
+      ".klw-root.klw-right .klw-launcher-hint{left:auto;right:4px;}",
       ".klw-root.klw-hint-hidden .klw-launcher-hint{opacity:0;transform:translateY(8px);pointer-events:none;animation:none;}",
       "@keyframes klw-hint-breathe{0%,65%,100%{opacity:.96;transform:translateY(0);}72%{opacity:.78;transform:translateY(-2px);}84%{opacity:1;transform:translateY(0);}}",
-      ".klw-launcher{position:relative;width:60px;height:60px;border-radius:999px;border:1px solid rgba(184,31,52,.16);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 28px rgba(66,15,24,.18);transition:transform .2s ease,box-shadow .2s ease;animation:klw-launcher-pulse 3.6s ease-in-out infinite;}",
+      ".klw-launcher{position:relative;width:60px;height:60px;border-radius:999px;border:1px solid var(--klw-a16);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 28px rgba(28,26,36,.18);transition:transform .2s ease,box-shadow .2s ease;animation:klw-launcher-pulse 3.6s ease-in-out infinite;}",
       ".klw-launcher:hover{transform:translateY(-1px);}",
-      ".klw-launcher:focus-visible,.klw-prompt:focus-visible,.klw-close:focus-visible,.klw-send:focus-visible,.klw-input:focus-visible{outline:3px solid rgba(211,17,69,.22);outline-offset:2px;}",
+      ".klw-launcher:focus-visible,.klw-prompt:focus-visible,.klw-close:focus-visible,.klw-send:focus-visible,.klw-input:focus-visible{outline:3px solid var(--klw-a22);outline-offset:2px;}",
       ".klw-launcher img{width:30px;height:30px;display:block;object-fit:contain;}",
-      "@keyframes klw-launcher-pulse{0%,100%{transform:scale(1);box-shadow:0 10px 28px rgba(66,15,24,.18),0 0 0 0 rgba(211,17,69,.06);}20%{transform:scale(1.03);box-shadow:0 12px 32px rgba(66,15,24,.20),0 0 0 8px rgba(211,17,69,.10);}45%{transform:scale(1.035);box-shadow:0 14px 38px rgba(66,15,24,.22),0 0 0 14px rgba(211,17,69,.13);}70%{transform:scale(1.01);box-shadow:0 11px 30px rgba(66,15,24,.18),0 0 0 4px rgba(211,17,69,.05);}}",
-      ".klw-panel{position:fixed;left:20px;bottom:92px;width:332px;max-width:calc(100vw - 24px);height:560px;max-height:calc(100vh - 120px);background:linear-gradient(180deg,#fffdfd 0%,#fff8f9 100%);border:1px solid rgba(184,31,52,.14);border-radius:24px;box-shadow:0 18px 48px rgba(66,15,24,.14),0 4px 14px rgba(66,15,24,.08);overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;transition:opacity .24s ease,transform .24s ease;z-index:2147480001;backdrop-filter:blur(14px);}",
+      "@keyframes klw-launcher-pulse{0%,100%{transform:scale(1);box-shadow:0 10px 28px rgba(28,26,36,.18),0 0 0 0 var(--klw-a06);}20%{transform:scale(1.03);box-shadow:0 12px 32px rgba(28,26,36,.20),0 0 0 8px var(--klw-a10);}45%{transform:scale(1.035);box-shadow:0 14px 38px rgba(28,26,36,.22),0 0 0 14px var(--klw-a13);}70%{transform:scale(1.01);box-shadow:0 11px 30px rgba(28,26,36,.18),0 0 0 4px var(--klw-a05);}}",
+      ".klw-panel{position:fixed;left:20px;bottom:92px;width:332px;max-width:calc(100vw - 24px);height:560px;max-height:calc(100vh - 120px);background:linear-gradient(180deg,#ffffff 0%,#fbfafc 100%);border:1px solid var(--klw-a14);border-radius:24px;box-shadow:0 18px 48px rgba(28,26,36,.14),0 4px 14px rgba(28,26,36,.08);overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;transition:opacity .24s ease,transform .24s ease;z-index:2147480001;backdrop-filter:blur(14px);}",
+      ".klw-panel.klw-right{left:auto;right:20px;}",
       ".klw-panel.klw-open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}",
-      ".klw-header{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:rgba(255,255,255,.92);border-bottom:1px solid rgba(184,31,52,.12);}",
+      ".klw-header{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:rgba(255,255,255,.92);border-bottom:1px solid var(--klw-a12);}",
       ".klw-header-main{display:flex;align-items:center;gap:10px;min-width:0;}",
       ".klw-header-icon{width:19px;height:19px;display:block;object-fit:contain;}",
       ".klw-header-title{font-size:17px;font-weight:700;color:#23181b;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
       ".klw-close{width:28px;height:28px;border-radius:999px;border:1px solid rgba(0,0,0,.08);background:transparent;color:#79686d;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none;}",
       ".klw-stage{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 14px;}",
       ".klw-intro{flex:1;display:flex;flex-direction:column;align-items:center;padding:34px 0 0;min-height:0;overflow:auto;}",
-      ".klw-hero-glow{width:80px;height:80px;border-radius:999px;background:radial-gradient(circle at center,rgba(239,107,131,.96) 0%,rgba(211,17,69,.90) 54%,rgba(211,17,69,.24) 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px rgba(211,17,69,.26);}",
+      ".klw-hero-glow{width:80px;height:80px;border-radius:999px;background:radial-gradient(circle at center,var(--klw-b96) 0%,var(--klw-a90) 54%,var(--klw-a24) 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px var(--klw-a26);}",
       ".klw-hero-glow img{width:32px;height:32px;object-fit:contain;}",
-      ".klw-intro-title{margin:18px 0 0;font-size:28px;font-weight:700;letter-spacing:-.02em;color:#cf1c42;text-align:center;}",
+      ".klw-intro-title{margin:18px 0 0;font-size:28px;font-weight:700;letter-spacing:-.02em;color:var(--klw-accent);text-align:center;}",
       ".klw-intro-sub{margin:10px 0 0;max-width:250px;font-size:14px;line-height:1.5;color:#6f5b61;text-align:center;}",
       ".klw-prompts-wrap{width:100%;margin-top:28px;padding-bottom:10px;}",
       ".klw-prompts-label{margin:0 0 12px;font-size:14px;font-weight:700;color:#5d4750;}",
       ".klw-prompts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}",
-      ".klw-prompt{min-height:96px;padding:12px;border-radius:14px;border:1px solid rgba(184,31,52,.12);background:#fff;cursor:pointer;display:flex;flex-direction:column;gap:12px;justify-content:flex-start;text-align:left;color:#23181b;box-shadow:0 4px 12px rgba(66,15,24,.05);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}",
-      ".klw-prompt:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(66,15,24,.08);border-color:rgba(211,17,69,.18);}",
-      ".klw-prompt-icon{width:18px;height:18px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:rgba(211,17,69,.09);color:#d31145;flex:none;}",
+      ".klw-prompt{min-height:96px;padding:12px;border-radius:14px;border:1px solid var(--klw-a12);background:#fff;cursor:pointer;display:flex;flex-direction:column;gap:12px;justify-content:flex-start;text-align:left;color:#23181b;box-shadow:0 4px 12px rgba(28,26,36,.05);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}",
+      ".klw-prompt:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(28,26,36,.08);border-color:var(--klw-a18);}",
+      ".klw-prompt-icon{width:18px;height:18px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:var(--klw-a09);color:var(--klw-accent);flex:none;}",
       ".klw-prompt-icon svg{width:12px;height:12px;display:block;}",
       ".klw-prompt-text{font-size:14px;line-height:1.42;font-weight:500;}",
       ".klw-chat{display:none;flex:1;min-height:0;flex-direction:column;padding:14px 0 0;}",
       ".klw-chat.klw-active{display:flex;}",
       ".klw-messages{flex:1;min-height:0;overflow:auto;padding:0 2px 6px;display:flex;flex-direction:column;gap:12px;}",
-      ".klw-bubble-user{align-self:flex-end;max-width:86%;padding:12px 14px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 4px 12px rgba(66,15,24,.06);font-size:14px;line-height:1.48;color:#23181b;white-space:pre-wrap;}",
-      ".klw-answer{border-radius:14px;background:#fdf0f3;border:1px solid rgba(200,31,59,.16);padding:14px;box-shadow:0 6px 16px rgba(66,15,24,.05);}",
-      ".klw-answer-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:#a91f3b;font-size:13px;font-weight:700;}",
+      ".klw-bubble-user{align-self:flex-end;max-width:86%;padding:12px 14px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 4px 12px rgba(28,26,36,.06);font-size:14px;line-height:1.48;color:#23181b;white-space:pre-wrap;}",
+      ".klw-answer{border-radius:14px;background:var(--klw-answer-bg);border:1px solid var(--klw-a16);padding:14px;box-shadow:0 6px 16px rgba(28,26,36,.05);}",
+      ".klw-answer-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;color:var(--klw-accent-ink);font-size:13px;font-weight:700;}",
       ".klw-answer-head img{width:15px;height:15px;display:block;object-fit:contain;}",
       ".klw-answer-body{font-size:14px;line-height:1.52;color:#281c1f;white-space:pre-wrap;word-wrap:break-word;}",
       ".klw-answer-body p{margin:0 0 8px;}",
       ".klw-answer-body p:last-child{margin-bottom:0;}",
-      ".klw-answer-body a{color:#b3183a;text-decoration:underline;word-break:break-word;}",
+      ".klw-answer-body a{color:var(--klw-accent-ink);text-decoration:underline;word-break:break-word;}",
       ".klw-typing{display:inline-flex;gap:4px;align-items:center;}",
-      ".klw-typing span{width:6px;height:6px;border-radius:999px;background:#c84b63;animation:klw-typing 1s ease-in-out infinite;}",
+      ".klw-typing span{width:6px;height:6px;border-radius:999px;background:var(--klw-accent);animation:klw-typing 1s ease-in-out infinite;}",
       ".klw-typing span:nth-child(2){animation-delay:.14s;}",
       ".klw-typing span:nth-child(3){animation-delay:.28s;}",
       "@keyframes klw-typing{0%,60%,100%{opacity:.35;transform:translateY(0);}30%{opacity:1;transform:translateY(-2px);}}",
       ".klw-compose-wrap{padding:10px 0 12px;}",
-      ".klw-compose{display:flex;align-items:center;gap:8px;height:48px;padding:0 8px 0 14px;border-radius:999px;background:#fff;border:1px solid rgba(184,31,52,.12);box-shadow:0 8px 18px rgba(66,15,24,.05);}",
+      ".klw-compose{display:flex;align-items:center;gap:8px;height:48px;padding:0 8px 0 14px;border-radius:999px;background:#fff;border:1px solid var(--klw-a12);box-shadow:0 8px 18px rgba(28,26,36,.05);}",
       ".klw-input{flex:1;border:none;background:transparent;font:inherit;font-size:15px;color:#35262a;outline:none;resize:none;min-height:20px;max-height:92px;line-height:1.4;padding:0;margin:0;}",
       ".klw-input::placeholder{color:#8c7780;}",
-      ".klw-send{width:32px;height:32px;border:none;border-radius:999px;background:linear-gradient(135deg,#d31145 0%,#ef6b83 100%);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;box-shadow:0 8px 18px rgba(211,17,69,.22);transition:transform .18s ease,opacity .18s ease,box-shadow .18s ease;flex:none;}",
+      ".klw-send{width:32px;height:32px;border:none;border-radius:999px;background:linear-gradient(135deg,var(--klw-accent) 0%,var(--klw-accent-2) 100%);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;box-shadow:0 8px 18px var(--klw-a22);transition:transform .18s ease,opacity .18s ease,box-shadow .18s ease;flex:none;}",
       ".klw-send:hover{transform:translateY(-1px);}",
       ".klw-send:disabled{opacity:.48;cursor:not-allowed;box-shadow:none;transform:none;}",
       ".klw-send svg{width:14px;height:14px;display:block;}",
       ".klw-footer{padding-top:8px;text-align:center;font-size:10px;color:#9b8990;letter-spacing:.01em;}",
-      "@media (max-width:760px){.klw-root{left:16px;bottom:16px;}.klw-panel{left:12px;right:12px;bottom:88px;width:auto;max-width:none;height:min(620px,calc(100vh - 116px));}.klw-launcher-hint{display:none;}.klw-prompts{grid-template-columns:1fr;}.klw-intro-title{font-size:26px;}}",
+      "@media (max-width:760px){.klw-root{left:16px;bottom:16px;}.klw-root.klw-right{left:auto;right:16px;}.klw-panel,.klw-panel.klw-right{left:12px;right:12px;bottom:88px;width:auto;max-width:none;height:min(620px,calc(100vh - 116px));}.klw-launcher-hint{display:none;}.klw-prompts{grid-template-columns:1fr;}.klw-intro-title{font-size:26px;}}",
       "@media (prefers-reduced-motion: reduce){.klw-launcher,.klw-launcher-hint,.klw-typing span{animation:none !important;}}"
     ].join("\n");
 
@@ -152,7 +228,7 @@
     document.head.appendChild(styleEl);
 
     var root = document.createElement("div");
-    root.className = "klw-root" + (ls(STORAGE.openedOnce) === "1" ? " klw-hint-hidden" : "");
+    root.className = "klw-root" + (positionRight ? " klw-right" : "") + (ls(STORAGE.openedOnce) === "1" ? " klw-hint-hidden" : "");
 
     var hint = document.createElement("div");
     hint.className = "klw-launcher-hint";
@@ -161,7 +237,7 @@
     var launcher = document.createElement("button");
     launcher.type = "button";
     launcher.className = "klw-launcher";
-    launcher.setAttribute("aria-label", "Open Buffalo RiverWorks chat");
+    launcher.setAttribute("aria-label", "Open " + cfg.title + " chat");
     launcher.innerHTML = '<img alt="" />';
     launcher.querySelector("img").src = cfg.launcherLogoUrl;
 
@@ -170,7 +246,7 @@
     document.body.appendChild(root);
 
     var panel = document.createElement("div");
-    panel.className = "klw-panel";
+    panel.className = "klw-panel" + (positionRight ? " klw-right" : "");
     panel.setAttribute("role", "dialog");
     panel.setAttribute("aria-modal", "true");
     panel.setAttribute("aria-label", cfg.title);
@@ -203,12 +279,13 @@
       '<h2 class="klw-intro-title"></h2>' +
       '<p class="klw-intro-sub"></p>' +
       '<div class="klw-prompts-wrap">' +
-      '<p class="klw-prompts-label">Quick prompts:</p>' +
+      '<p class="klw-prompts-label"></p>' +
       '<div class="klw-prompts"></div>' +
       "</div>";
     introView.querySelector(".klw-hero-glow img").src = cfg.logoUrl;
-    introView.querySelector(".klw-intro-title").textContent = cfg.title;
+    introView.querySelector(".klw-intro-title").textContent = cfg.introTitle;
     introView.querySelector(".klw-intro-sub").textContent = cfg.introSubtitle;
+    introView.querySelector(".klw-prompts-label").textContent = cfg.quickPromptsLabel;
     stage.appendChild(introView);
 
     var chatView = document.createElement("div");
@@ -224,7 +301,7 @@
     composeWrap.className = "klw-compose-wrap";
     composeWrap.innerHTML =
       '<div class="klw-compose">' +
-      '<textarea class="klw-input" rows="1" aria-label="Message Buffalo RiverWorks"></textarea>' +
+      '<textarea class="klw-input" rows="1"></textarea>' +
       '<button class="klw-send" type="button" aria-label="Send">' +
       '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
       '<path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>' +
@@ -234,12 +311,13 @@
     var inputEl = composeWrap.querySelector(".klw-input");
     var sendBtn = composeWrap.querySelector(".klw-send");
     inputEl.placeholder = cfg.placeholder;
+    inputEl.setAttribute("aria-label", "Message " + cfg.title);
     stage.appendChild(composeWrap);
 
     if (cfg.poweredByFooter) {
       var footer = document.createElement("div");
       footer.className = "klw-footer";
-      footer.textContent = "Powered by Kliento AI";
+      footer.textContent = cfg.footerText;
       stage.appendChild(footer);
     }
 
@@ -456,7 +534,7 @@
           state.loading = false;
           state.conversation.push({
             role: "assistant",
-            text: "The local chat backend is not connected yet."
+            text: "The chat backend is not connected yet."
           });
           updateComposerState();
           renderMessages();
