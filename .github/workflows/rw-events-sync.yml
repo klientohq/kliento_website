@@ -3,7 +3,14 @@ name: RW Events Sync
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 */6 * * *'
+    # 19:00 UTC = 3:00 PM America/New_York (EDT). Once daily.
+    # (During EST/winter this lands at 2:00 PM ET — GitHub cron has no timezone.)
+    - cron: '0 19 * * *'
+
+# Cost: this repo is PUBLIC, so GitHub Actions minutes are unlimited & free ($0).
+# Design: the workflow NEVER fails. If the venue's SiteGround/sgcaptcha challenges a
+# fetch, we keep the last-good data file and just log a warning — so Camilo never gets
+# a spurious "run failed" email and Sarah always has the last good copy.
 
 permissions:
   contents: write
@@ -15,53 +22,48 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch RiverWorks events API
+      - name: Fetch RiverWorks events API (retry; keep last good on challenge)
         run: |
           START_DATE=$(TZ=America/New_York date +%F)
           URL="https://buffaloriverworks.com/wp-json/tribe/events/v1/events?per_page=25&status=publish&start_date=${START_DATE}"
           UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-          HTTP_STATUS=$(curl -sS -o response.json -w '%{http_code}' -H "User-Agent: ${UA}" "$URL")
-          echo "HTTP status: ${HTTP_STATUS}"
-          if [ "$HTTP_STATUS" != "200" ]; then
-            echo "ERROR: non-200 response"
-            head -c 500 response.json
-            exit 1
-          fi
-
-      - name: Validate JSON
-        run: |
-          if ! jq -e '.events' response.json > /dev/null; then
-            echo "ERROR: response is not valid JSON with an .events array"
-            head -c 500 response.json
-            exit 1
-          fi
-          echo "Valid: $(jq '.events | length' response.json) events"
-
-      - name: Write data/rw-events.json
-        run: |
+          EVENTS_OK=no
+          for attempt in 1 2 3 4 5; do
+            HTTP_STATUS=$(curl -sS -o response.json -w '%{http_code}' -H "User-Agent: ${UA}" "$URL" || echo "000")
+            echo "Attempt ${attempt}: HTTP ${HTTP_STATUS}"
+            if [ "$HTTP_STATUS" = "200" ] && jq -e '.events' response.json > /dev/null 2>&1; then
+              EVENTS_OK=yes
+              break
+            fi
+            grep -qi 'sgcaptcha' response.json 2>/dev/null && echo "  (sgcaptcha challenge — will retry)"
+            sleep 20
+          done
           mkdir -p data
-          jq --arg t "$(date -u +%FT%TZ)" '. + {generated_at:$t}' response.json > data/rw-events.json
+          if [ "$EVENTS_OK" = "yes" ]; then
+            jq --arg t "$(date -u +%FT%TZ)" '. + {generated_at:$t}' response.json > data/rw-events.json
+            echo "Events refreshed: $(jq '.events | length' data/rw-events.json) events"
+          else
+            echo "WARNING: events API challenged/unreachable after retries — keeping last-good data/rw-events.json"
+          fi
           rm -f response.json
 
-      - name: Fetch RiverWorks homepage (mirror for Sarah fetch_website)
+      - name: Fetch RiverWorks homepage (mirror for Sarah fetch_website; keep last good on challenge)
         run: |
           UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
           HTTP_STATUS=$(curl -sS -o homepage.html -w '%{http_code}' -H "User-Agent: ${UA}" "https://buffaloriverworks.com/" || echo "000")
-          echo "HTTP status: ${HTTP_STATUS}"
-          HOMEPAGE_OK=no
+          echo "Homepage HTTP ${HTTP_STATUS}"
+          mkdir -p data
           if [ "$HTTP_STATUS" = "200" ] && ! grep -qi 'sgcaptcha' homepage.html && [ "$(wc -c < homepage.html)" -gt 20000 ]; then
-            HOMEPAGE_OK=yes
             jq -Rs --arg t "$(date -u +%FT%TZ)" '{generated_at:$t, html:.}' homepage.html > data/rw-homepage.json
             echo "Homepage mirrored ($(wc -c < homepage.html) bytes)"
           else
-            echo "WARNING: homepage fetch failed or challenged — keeping last good mirror"
+            echo "WARNING: homepage challenged/failed — keeping last-good data/rw-homepage.json"
           fi
-          echo "HOMEPAGE_OK=${HOMEPAGE_OK}" >> "$GITHUB_ENV"
           rm -f homepage.html
 
       - name: Commit and push if changed
         run: |
-          git add data/rw-events.json data/rw-homepage.json 2>/dev/null || git add data/rw-events.json
+          git add data/rw-events.json data/rw-homepage.json 2>/dev/null || true
           if git diff --quiet --cached; then
             echo "No changes to commit"
             exit 0
@@ -70,10 +72,3 @@ jobs:
             commit --author="rw-events-bot <klientohq@gmail.com>" -m "chore: rw events + homepage sync"
           git pull --rebase origin main
           git push origin main
-
-      - name: Fail run if homepage was challenged (events already committed)
-        run: |
-          if [ "${HOMEPAGE_OK}" != "yes" ]; then
-            echo "Homepage mirror did not refresh this run — failing so the repo owner is notified."
-            exit 1
-          fi
