@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thekliento.com/sitemap.xml
