@@ -5662,9 +5662,9 @@
       "virtual_video_source": ""
     }
   ],
-  "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=25&start_date=2026-07-18 00:00:00&end_date=2028-07-19 23:59:59&status=publish",
-  "next_rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?per_page=25&start_date=2026-07-18+00%3A00%3A00&end_date=2028-07-19+23%3A59%3A59&status=publish&page=2",
+  "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=25&start_date=2026-07-19 00:00:00&end_date=2028-07-19 23:59:59&status=publish",
+  "next_rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?per_page=25&start_date=2026-07-19+00%3A00%3A00&end_date=2028-07-19+23%3A59%3A59&status=publish&page=2",
   "total": 45,
   "total_pages": 2,
-  "generated_at": "2026-07-19T03:46:40Z"
+  "generated_at": "2026-07-19T14:23:02Z"
 }
