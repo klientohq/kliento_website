@@ -3,9 +3,9 @@ name: RW Events Sync
 on:
   workflow_dispatch:
   schedule:
-    # 19:00 UTC = 3:00 PM America/New_York (EDT). Once daily.
-    # (During EST/winter this lands at 2:00 PM ET — GitHub cron has no timezone.)
-    - cron: '0 19 * * *'
+    # Every 6 hours (01/07/13/19 UTC = 9PM/3AM/9AM/3PM ET during EDT). sgcaptcha
+    # challenges are intermittent, so 4 windows/day makes a stale mirror very unlikely.
+    - cron: '0 1,7,13,19 * * *'
 
 # Cost: this repo is PUBLIC, so GitHub Actions minutes are unlimited & free ($0).
 # Design: the workflow NEVER fails. If the venue's SiteGround/sgcaptcha challenges a
@@ -28,15 +28,15 @@ jobs:
           URL="https://buffaloriverworks.com/wp-json/tribe/events/v1/events?per_page=25&status=publish&start_date=${START_DATE}"
           UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
           EVENTS_OK=no
-          for attempt in 1 2 3 4 5; do
-            HTTP_STATUS=$(curl -sS -o response.json -w '%{http_code}' -H "User-Agent: ${UA}" "$URL" || echo "000")
+          for attempt in 1 2 3 4 5 6 7 8; do
+            HTTP_STATUS=$(curl -sS -L -c cookies.txt -b cookies.txt -o response.json -w '%{http_code}' -H "User-Agent: ${UA}" -H "Accept: application/json" "$URL" || echo "000")
             echo "Attempt ${attempt}: HTTP ${HTTP_STATUS}"
             if [ "$HTTP_STATUS" = "200" ] && jq -e '.events' response.json > /dev/null 2>&1; then
               EVENTS_OK=yes
               break
             fi
-            grep -qi 'sgcaptcha' response.json 2>/dev/null && echo "  (sgcaptcha challenge — will retry)"
-            sleep 20
+            grep -qi 'sgcaptcha' response.json 2>/dev/null && echo "  (sgcaptcha challenge — will retry with cookie jar)"
+            sleep $((15 + attempt * 10))
           done
           mkdir -p data
           if [ "$EVENTS_OK" = "yes" ]; then
@@ -44,8 +44,20 @@ jobs:
             echo "Events refreshed: $(jq '.events | length' data/rw-events.json) events"
           else
             echo "WARNING: events API challenged/unreachable after retries — keeping last-good data/rw-events.json"
+            # Keep-last-good is fine for a day, but a mirror stale >48h must fail LOUD once
+            # so it can't rot unnoticed (it sat silently stale 33h on 2026-07-19). Sarah
+            # still degrades gracefully: stale list + caveat, then live-API fallback.
+            GEN_AT=$(jq -r '.generated_at // empty' data/rw-events.json 2>/dev/null)
+            if [ -n "$GEN_AT" ]; then
+              AGE_H=$(( ( $(date -u +%s) - $(date -u -d "$GEN_AT" +%s) ) / 3600 ))
+              echo "Mirror age: ${AGE_H}h"
+              if [ "$AGE_H" -gt 48 ]; then
+                echo "ERROR: rw-events.json stale for ${AGE_H}h (>48h) — failing loudly so this gets attention."
+                exit 1
+              fi
+            fi
           fi
-          rm -f response.json
+          rm -f response.json cookies.txt
 
       - name: Fetch RiverWorks homepage (mirror for Sarah fetch_website; keep last good on challenge)
         run: |
