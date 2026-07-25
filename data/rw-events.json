@@ -654,7 +654,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -1310,7 +1310,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 12,
+          "count": 13,
           "filter": "raw",
           "id": 104,
           "urls": {
@@ -1326,7 +1326,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -1559,7 +1559,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -1786,6 +1786,280 @@
       "sticky": false,
       "featured": false,
       "categories": [],
+      "tags": [],
+      "venue": {
+        "id": 4833,
+        "author": "1",
+        "status": "publish",
+        "date": "2017-03-19 17:19:53",
+        "date_utc": "2017-03-19 22:19:53",
+        "modified": "2025-10-28 03:56:12",
+        "modified_utc": "2025-10-28 07:56:12",
+        "url": "https://buffaloriverworks.com/venue/buffalo-riverworks/",
+        "venue": "Buffalo Riverworks",
+        "description": "<div style=\"display: none;\">Buffalo RiverWorks est un lieu unique qui offre une fusion intemporelle d&#8217;activités, de divertissements et de vues imprenables sur le front de mer. Abritant diverses ligues sportives, des parcours d&#8217;accrobranche urbains, plusieurs bars et restaurants, et même un silo à grains transformé en le plus grand du monde, RiverWorks offre un cadre unique à tous les amateurs de divertissement.</p>\n<p>Idéalement situé sur les rives de la rivière Buffalo, ce lieu magnifique invite à l&#8217;exploration. Tout comme sur <a href=\"https://casino.actionclimat.ca/\">https://casino.actionclimat.ca/</a>, vous pourrez vivre une montée d&#8217;adrénaline en participant à des activités captivantes ou vous détendre et admirer le paysage pittoresque du port.</p>\n<p>Similaire aux sensations fortes et à l&#8217;exaltation des plateformes de jeux en ligne comme Asino, Buffalo RiverWorks déborde de vie et d&#8217;effervescence. Bien que différents par nature, les deux sites partagent le même objectif : offrir une expérience inoubliable qui vous donnera envie de revenir.</p>\n<p>Que vous préfériez jouer au blackjack sur Asino ou faire du rafting à Buffalo RiverWorks, tous deux ont le charme et l&#8217;attrait qui vous accueilleront toujours et répondront à vos envies de divertissement et de sensations fortes. À RiverWorks, il se passe toujours quelque chose d&#8217;amusant, tout comme il y a toujours un nouveau jeu qui vous attend au Casino Action Climat. Avec un large éventail d&#8217;activités disponibles, RiverWorks s&#8217;est imposé comme un haut lieu du divertissement à Buffalo, vous offrant une expérience palpitante à chaque fois. Venez découvrir nos offres et faites de chaque visite une aventure mémorable.</p></div>",
+        "slug": "buffalo-riverworks",
+        "address": "359 Ganson Street",
+        "city": "Buffalo",
+        "country": "United States",
+        "state": "NY",
+        "zip": "14203",
+        "phone": "844.SIX.CANS",
+        "website": "https://buffaloriverworks.com/",
+        "stateprovince": "NY",
+        "geo_lat": 42.8699170000000009395080269314348697662353515625,
+        "geo_lng": -78.87263799999999491774360649287700653076171875,
+        "show_map": true,
+        "show_map_link": true,
+        "global_id": "buffaloriverworks.com?id=4833",
+        "global_id_lineage": [
+          "buffaloriverworks.com?id=4833"
+        ]
+      },
+      "organizer": [],
+      "custom_fields": [],
+      "is_virtual": false,
+      "virtual_url": null,
+      "virtual_video_source": ""
+    },
+    {
+      "id": 30662,
+      "global_id": "buffaloriverworks.com?id=30662",
+      "global_id_lineage": [
+        "buffaloriverworks.com?id=30662"
+      ],
+      "author": "29",
+      "status": "publish",
+      "date": "2026-07-25 14:11:05",
+      "date_utc": "2026-07-25 18:11:05",
+      "modified": "2026-07-25 14:20:36",
+      "modified_utc": "2026-07-25 18:20:36",
+      "url": "https://buffaloriverworks.com/event/1st-annual-drum-festival-wny-drummers-for-homeless-people/",
+      "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/30662",
+      "title": "1st Annual Drum Festival — WNY Drummers for Homeless People",
+      "description": "<p><!-- RW-EVENT: WNY DRUMMERS FOR HOMELESS PEOPLE - 1ST ANNUAL DRUM FESTIVAL @ BUFFALO RIVERWORKS --></p>\n<div style=\"max-width:700px;margin:0 auto;padding:0;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;\">\n<div style=\"background:radial-gradient(circle at 50% 6%,rgba(214,36,46,0.55) 0%,rgba(214,36,46,0.10) 46%,rgba(214,36,46,0) 68%),linear-gradient(168deg,#241b17 0%,#17120f 42%,#1d1613 70%,#2c1b18 100%);border-radius:14px;padding:48px 32px 40px;text-align:center;margin-bottom:16px;box-shadow:0 18px 40px rgba(20,15,13,0.28);\">\n<p style=\"font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#f0d9c4;margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🥁 WNY Drummers for Homeless People Presents</p>\n<p style=\"font-size:12px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#f4525c;margin:0 0 6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">1st Annual</p>\n<h2 style=\"font-size:44px;font-weight:800;color:#f6ecd9;margin:0 0 8px;line-height:1.05;text-shadow:0 3px 24px rgba(0,0,0,0.65);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Drum Festival</h2>\n<p style=\"font-size:16px;color:#e6d6c4;margin:0 0 6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">A new chapter for WNY&#8217;s community drum circle, now at Buffalo RiverWorks</p>\n<p style=\"font-size:14px;color:#e6d6c4;margin:0 0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Sunday, August 2, 2026 &nbsp;·&nbsp; 12:00 PM – 4:00 PM</p>\n<p>    <span style=\"display:inline-block;background:rgba(246,236,217,0.08);border:1px solid rgba(246,236,217,0.28);border-radius:999px;padding:6px 20px;font-size:13px;color:#f0e2d1;margin-bottom:24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">📍 Buffalo RiverWorks &nbsp;·&nbsp; 359 Ganson Street, Buffalo, NY</span><br />\n    <a href=\"https://www.wnydrummersforhomelesspeople.com\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:linear-gradient(180deg,#e0262f 0%,#ad141d 100%);color:#ffffff;font-size:16px;font-weight:700;padding:14px 40px;border-radius:8px;text-decoration:none;margin-top:8px;box-shadow:0 10px 26px rgba(214,36,46,0.38);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;touch-action:manipulation;\">🥁 Learn More</a>\n  </div>\n<table style=\"width:100%;border-collapse:separate;border-spacing:10px;margin-bottom:6px;table-layout:fixed;\">\n<tr>\n<td style=\"background:linear-gradient(168deg,#2a1f1b 0%,#191411 100%);border:1px solid rgba(246,236,217,0.13);border-radius:12px;padding:16px 14px;vertical-align:top;box-shadow:0 8px 20px rgba(20,15,13,0.18);\">\n<div style=\"font-size:22px;margin-bottom:6px;\">📅</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#f4525c;margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Date</div>\n<div style=\"font-size:15px;font-weight:700;color:#f6ecd9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Sunday, Aug 2</div>\n</td>\n<td style=\"background:linear-gradient(168deg,#2a1f1b 0%,#191411 100%);border:1px solid rgba(246,236,217,0.13);border-radius:12px;padding:16px 14px;vertical-align:top;box-shadow:0 8px 20px rgba(20,15,13,0.18);\">\n<div style=\"font-size:22px;margin-bottom:6px;\">🕛</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#f4525c;margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Festival Hours</div>\n<div style=\"font-size:15px;font-weight:700;color:#f6ecd9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">12 – 4 PM</div>\n</td>\n<td style=\"background:linear-gradient(168deg,#2a1f1b 0%,#191411 100%);border:1px solid rgba(246,236,217,0.13);border-radius:12px;padding:16px 14px;vertical-align:top;box-shadow:0 8px 20px rgba(20,15,13,0.18);\">\n<div style=\"font-size:22px;margin-bottom:6px;\">📍</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#f4525c;margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">New Location</div>\n<div style=\"font-size:15px;font-weight:700;color:#f6ecd9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Buffalo RiverWorks</div>\n</td>\n<td style=\"background:linear-gradient(168deg,#2a1f1b 0%,#191411 100%);border:1px solid rgba(246,236,217,0.13);border-radius:12px;padding:16px 14px;vertical-align:top;box-shadow:0 8px 20px rgba(20,15,13,0.18);\">\n<div style=\"font-size:22px;margin-bottom:6px;\">👨‍👩‍👧‍👦</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#f4525c;margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Admission</div>\n<div style=\"font-size:15px;font-weight:700;color:#f6ecd9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">No Cover<br />All Ages</div>\n</td>\n</tr>\n</table>\n<div style=\"background:#ffffff;border:2px solid #ece3d5;border-radius:12px;margin:16px 0;overflow:hidden;box-shadow:0 6px 18px rgba(20,15,13,0.06);\">\n<div style=\"padding:14px 18px;border-bottom:2px solid #ece3d5;background:linear-gradient(120deg,#fdfaf5 0%,#f8f1e7 100%);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b0161f;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🥁 What&#8217;s Happening</div>\n<table style=\"width:100%;border-collapse:collapse;\">\n<tr style=\"border-bottom:1px solid #f4efe7;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">👨‍👩‍👧‍👦 Family Event</td>\n<td style=\"padding:14px 18px;text-align:right;\"><span style=\"font-size:11px;font-weight:700;background:#fdeaeb;color:#a8151d;padding:4px 14px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">All Ages</span></td>\n</tr>\n<tr style=\"border-bottom:1px solid #f4efe7;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🥁 Bring Your Drums — Electronic Too!</td>\n<td style=\"padding:14px 18px;text-align:right;\"><span style=\"font-size:11px;font-weight:700;background:#f2ece4;color:#3b3230;padding:4px 14px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Encouraged</span></td>\n</tr>\n<tr style=\"border-bottom:1px solid #f4efe7;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🎶 Come Play &amp; Meet New Friends</td>\n<td style=\"padding:14px 18px;text-align:right;\"><span style=\"font-size:11px;font-weight:700;background:#fdeaeb;color:#a8151d;padding:4px 14px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Open to All</span></td>\n</tr>\n<tr style=\"border-bottom:1px solid #f4efe7;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🏆 Vote for Your Favorite Drum</td>\n<td style=\"padding:14px 18px;text-align:right;\"><span style=\"font-size:11px;font-weight:700;background:#f2ece4;color:#3b3230;padding:4px 14px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">All Day</span></td>\n</tr>\n<tr style=\"border-bottom:1px solid #f4efe7;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🎟️ 50/50 Drawing</td>\n<td style=\"padding:14px 18px;text-align:right;\"><span style=\"font-size:11px;font-weight:700;background:#fdeaeb;color:#a8151d;padding:4px 14px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">On-Site</span></td>\n</tr>\n<tr>\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🛍️ Merchandise &amp; Vendors</td>\n<td style=\"padding:14px 18px;text-align:right;\"><span style=\"font-size:11px;font-weight:700;background:#f2ece4;color:#3b3230;padding:4px 14px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">On-Site</span></td>\n</tr>\n</table></div>\n<div style=\"background:linear-gradient(160deg,#fffdfa 0%,#fdf4ee 55%,#faece9 100%);border:2px solid #f0dcd6;border-radius:12px;margin:16px 0;padding:20px 22px;box-shadow:0 6px 18px rgba(20,15,13,0.05);\">\n<p style=\"font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b0161f;margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🥁 About the Festival</p>\n<p style=\"font-size:17px;font-weight:800;color:#1a1512;margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">A new chapter, a new home on the water</p>\n<p style=\"font-size:14px;color:#3b3230;line-height:1.75;margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Since 2015, the Western New York Drumming Festival has been held every August in the Buffalo, New York region. Join us as our next chapter begins in 2026 at our <strong>new location at Buffalo RiverWorks!</strong></p>\n<p style=\"font-size:14px;color:#3b3230;line-height:1.75;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">This free, family-friendly celebration brings the community together through the joy of drumming. Bring your own drum — electronic drums welcome too — and jump into the circle, or simply come watch, vote for your favorite drummer, and enjoy an afternoon on the water.</p>\n</p></div>\n<div style=\"background:linear-gradient(160deg,#fdfbf7 0%,#f6f1e8 100%);border:2px solid #e8dfd0;border-radius:12px;margin:16px 0;padding:18px 22px;box-shadow:0 6px 18px rgba(20,15,13,0.05);\">\n<p style=\"font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b0161f;margin:0 0 8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">💛 Donations Gratefully Accepted</p>\n<p style=\"font-size:14px;color:#3b3230;line-height:1.75;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Cash &nbsp;·&nbsp; New Socks &nbsp;·&nbsp; Underwear &nbsp;·&nbsp; Diapers &nbsp;·&nbsp; Toiletries — all proceeds and donations benefit <strong>WNY Drummers for Homeless People</strong>.</p>\n</p></div>\n<table style=\"width:100%;border-collapse:collapse;background:linear-gradient(160deg,#fbf8f4 0%,#f3ede5 100%);border:2px solid #e8dfd0;border-radius:12px;margin:16px 0;\">\n<tr>\n<td style=\"padding:18px 20px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div style=\"font-size:16px;font-weight:700;color:#3b3230;line-height:1.45;margin:0 0 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🪪 All Ages Welcome</div>\n<p>        <span style=\"display:inline-block;min-width:220px;background:linear-gradient(180deg,#e0262f 0%,#ad141d 100%);color:#ffffff;font-size:16px;font-weight:800;line-height:1.2;text-align:center;padding:14px 28px;border-radius:8px;box-shadow:0 10px 24px rgba(214,36,46,0.32);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;white-space:nowrap;\">🎉 Free Admission!</span>\n      </td>\n</tr>\n</table>\n<details style=\"border:2px solid #1d1613;border-radius:12px;margin:16px 0;overflow:hidden;background:#ffffff;box-shadow:0 8px 22px rgba(20,15,13,0.10);\">\n<summary style=\"background-color:#1d1613;background-image:linear-gradient(100deg,#17120f 0%,#2a1b18 52%,#a8151d 100%);padding:18px 22px;cursor:pointer;font-size:17px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#f6ecd9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">ℹ️ &nbsp;Good to Know Before You Go</summary>\n<div style=\"background:#ffffff;\">\n<details style=\"border-top:1px solid #efe8dc;background:#ffffff;\">\n<summary style=\"padding:15px 20px;cursor:pointer;font-size:14px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🥁 &nbsp;Do I need to bring my own drum?</summary>\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#3b3230;line-height:1.7;background:#faf7f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">No! Bring your own drum if you have one — electronic drums are welcome too — or simply come enjoy the show, vote for your favorite drummer, and cheer on the circle.</p>\n</details>\n<details style=\"border-top:1px solid #efe8dc;background:#ffffff;\">\n<summary style=\"padding:15px 20px;cursor:pointer;font-size:14px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">💛 &nbsp;What should I donate?</summary>\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#3b3230;line-height:1.7;background:#faf7f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Cash, new socks, underwear, diapers, and toiletries are gratefully accepted. All proceeds and donations benefit WNY Drummers for Homeless People.</p>\n</details>\n<details style=\"border-top:1px solid #efe8dc;background:#ffffff;\">\n<summary style=\"padding:15px 20px;cursor:pointer;font-size:14px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">👨‍👩‍👧 &nbsp;Is this family friendly?</summary>\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#3b3230;line-height:1.7;background:#faf7f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Yes — this is a free, all-ages community event perfect for the whole family, with no cover charge.</p>\n</details>\n<details style=\"border-top:1px solid #efe8dc;background:#ffffff;\">\n<summary style=\"padding:15px 20px;cursor:pointer;font-size:14px;font-weight:700;color:#1a1512;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🅿️ &nbsp;Where do I park?</summary>\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#3b3230;line-height:1.7;background:#faf7f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Parking is available at Buffalo RiverWorks, 359 Ganson Street, Buffalo, NY.</p>\n</details>\n<div style=\"background:linear-gradient(120deg,#fbf8f4 0%,#f4eee6 100%);border-top:2px solid #e8dfd0;padding:14px 18px;text-align:center;\">\n        <a href=\"https://www.wnydrummersforhomelesspeople.com\" target=\"_blank\" rel=\"noopener\" style=\"font-size:13px;color:#b0161f;text-decoration:none;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#8599; More info &amp; sessions at wnydrummersforhomelesspeople.com</a>\n      </div>\n</p></div>\n</details>\n</div>\n<p><!-- END RW-EVENT --></p>",
+      "excerpt": "",
+      "slug": "1st-annual-drum-festival-wny-drummers-for-homeless-people",
+      "image": {
+        "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1.jpg",
+        "id": 30781,
+        "extension": "jpg",
+        "width": 1200,
+        "height": 628,
+        "filesize": 123866,
+        "sizes": {
+          "medium": {
+            "width": 300,
+            "height": 157,
+            "mime-type": "image/jpeg",
+            "filesize": 18275,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-300x157.jpg"
+          },
+          "large": {
+            "width": 1030,
+            "height": 539,
+            "mime-type": "image/jpeg",
+            "filesize": 169093,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-1030x539.jpg"
+          },
+          "thumbnail": {
+            "width": 80,
+            "height": 80,
+            "mime-type": "image/jpeg",
+            "filesize": 3373,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-80x80.jpg"
+          },
+          "medium_large": {
+            "width": 768,
+            "height": 402,
+            "mime-type": "image/jpeg",
+            "filesize": 98101,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-768x402.jpg"
+          },
+          "shop_thumbnail": {
+            "width": 120,
+            "height": 120,
+            "mime-type": "image/jpeg",
+            "filesize": 6558,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-120x120.jpg"
+          },
+          "shop_catalog": {
+            "width": 450,
+            "height": 450,
+            "mime-type": "image/jpeg",
+            "filesize": 62118,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-450x450.jpg"
+          },
+          "shop_single": {
+            "width": 450,
+            "height": 236,
+            "mime-type": "image/jpeg",
+            "filesize": 38349,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-450x236.jpg"
+          },
+          "depicter-thumbnail": {
+            "width": 200,
+            "height": 105,
+            "mime-type": "image/jpeg",
+            "filesize": 9642,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-200x105.jpg"
+          },
+          "cfw_cart_thumb": {
+            "width": 60,
+            "height": 31,
+            "mime-type": "image/jpeg",
+            "filesize": 1505,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-60x31.jpg"
+          },
+          "cfw_trust_badge_thumb": {
+            "width": 110,
+            "height": 58,
+            "mime-type": "image/jpeg",
+            "filesize": 3957,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-110x58.jpg"
+          },
+          "woocommerce_thumbnail": {
+            "width": 300,
+            "height": 300,
+            "mime-type": "image/jpeg",
+            "filesize": 30920,
+            "uncropped": false,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-300x300.jpg"
+          },
+          "woocommerce_single": {
+            "width": 600,
+            "height": 314,
+            "mime-type": "image/jpeg",
+            "filesize": 50467,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-600x314.jpg"
+          },
+          "woocommerce_gallery_thumbnail": {
+            "width": 100,
+            "height": 100,
+            "mime-type": "image/jpeg",
+            "filesize": 4946,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/07/DrumFest-2026_B-press_banner-1200x628-1-100x100.jpg"
+          }
+        }
+      },
+      "all_day": false,
+      "start_date": "2026-08-02 12:00:00",
+      "start_date_details": {
+        "year": "2026",
+        "month": "08",
+        "day": "02",
+        "hour": "12",
+        "minutes": "00",
+        "seconds": "00"
+      },
+      "end_date": "2026-08-02 16:00:00",
+      "end_date_details": {
+        "year": "2026",
+        "month": "08",
+        "day": "02",
+        "hour": "16",
+        "minutes": "00",
+        "seconds": "00"
+      },
+      "utc_start_date": "2026-08-02 16:00:00",
+      "utc_start_date_details": {
+        "year": "2026",
+        "month": "08",
+        "day": "02",
+        "hour": "16",
+        "minutes": "00",
+        "seconds": "00"
+      },
+      "utc_end_date": "2026-08-02 20:00:00",
+      "utc_end_date_details": {
+        "year": "2026",
+        "month": "08",
+        "day": "02",
+        "hour": "20",
+        "minutes": "00",
+        "seconds": "00"
+      },
+      "timezone": "America/New_York",
+      "timezone_abbr": "EDT",
+      "cost": "",
+      "cost_details": {
+        "currency_symbol": "$",
+        "currency_code": "USD",
+        "currency_position": "prefix",
+        "values": []
+      },
+      "website": "",
+      "show_map": true,
+      "show_map_link": true,
+      "hide_from_listings": false,
+      "sticky": false,
+      "featured": false,
+      "categories": [
+        {
+          "name": "Charity",
+          "slug": "charity",
+          "term_group": 0,
+          "term_taxonomy_id": 51,
+          "taxonomy": "tribe_events_cat",
+          "description": "",
+          "parent": 0,
+          "count": 2,
+          "filter": "raw",
+          "id": 51,
+          "urls": {
+            "self": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories/51",
+            "collection": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories"
+          }
+        },
+        {
+          "name": "Family Friendly Things to Do in Buffalo",
+          "slug": "family-friendly-things-to-do-in-buffalo",
+          "term_group": 0,
+          "term_taxonomy_id": 104,
+          "taxonomy": "tribe_events_cat",
+          "description": "",
+          "parent": 0,
+          "count": 13,
+          "filter": "raw",
+          "id": 104,
+          "urls": {
+            "self": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories/104",
+            "collection": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories"
+          }
+        },
+        {
+          "name": "Festival",
+          "slug": "festival",
+          "term_group": 0,
+          "term_taxonomy_id": 42,
+          "taxonomy": "tribe_events_cat",
+          "description": "",
+          "parent": 0,
+          "count": 4,
+          "filter": "raw",
+          "id": 42,
+          "urls": {
+            "self": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories/42",
+            "collection": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories"
+          }
+        },
+        {
+          "name": "RW Events",
+          "slug": "rw-events",
+          "term_group": 0,
+          "term_taxonomy_id": 48,
+          "taxonomy": "tribe_events_cat",
+          "description": "",
+          "parent": 0,
+          "count": 75,
+          "filter": "raw",
+          "id": 48,
+          "urls": {
+            "self": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories/48",
+            "collection": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories"
+          }
+        }
+      ],
       "tags": [],
       "venue": {
         "id": 4833,
@@ -2457,7 +2731,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -2701,7 +2975,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 12,
+          "count": 13,
           "filter": "raw",
           "id": 104,
           "urls": {
@@ -2717,7 +2991,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -2982,7 +3256,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -3242,7 +3516,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 12,
+          "count": 13,
           "filter": "raw",
           "id": 104,
           "urls": {
@@ -3258,7 +3532,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -3719,7 +3993,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -4564,7 +4838,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 12,
+          "count": 13,
           "filter": "raw",
           "id": 104,
           "urls": {
@@ -4580,7 +4854,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 3,
+          "count": 4,
           "filter": "raw",
           "id": 42,
           "urls": {
@@ -5437,209 +5711,11 @@
       "is_virtual": false,
       "virtual_url": null,
       "virtual_video_source": ""
-    },
-    {
-      "id": 30256,
-      "global_id": "buffaloriverworks.com?id=30256",
-      "global_id_lineage": [
-        "buffaloriverworks.com?id=30256"
-      ],
-      "author": "29",
-      "status": "publish",
-      "date": "2026-06-26 21:07:55",
-      "date_utc": "2026-06-27 01:07:55",
-      "modified": "2026-06-26 21:07:55",
-      "modified_utc": "2026-06-27 01:07:55",
-      "url": "https://buffaloriverworks.com/event/gregg-sansone-2/",
-      "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/30256",
-      "title": "Gregg Sansone",
-      "description": "<p><!-- RW-EVENT: THE SUMMER SERIES — GREGG SANSONE @ BUFFALO RIVERWORKS --></p>\n<div style=\"max-width:700px;margin:0 auto;padding:0;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;\">\n<p>  <!-- HERO BANNER --></p>\n<div style=\"background:linear-gradient(135deg,#0a0520 0%,#2a0a55 35%,#8a3a00 60%,#0a0520 100%);border-radius:12px;padding:48px 32px 40px;text-align:center;margin-bottom:16px;\">\n<p style=\"font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.92);margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">☀️ The Summer Concert Series</p>\n<h2 style=\"font-size:48px;font-weight:800;color:#ffffff;margin:0 0 8px;line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,0.5);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">GREGG SANSONE</h2>\n<p style=\"font-size:18px;color:rgba(255,255,255,0.92);margin:0 0 6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Live at the RiverBarge Stage</p>\n<p style=\"font-size:14px;color:rgba(255,255,255,0.85);margin:0 0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Saturday, August 22nd · 5–8 PM</p>\n<p>    <span style=\"display:inline-block;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.3);border-radius:999px;padding:6px 20px;font-size:13px;color:rgba(255,255,255,0.92);margin-bottom:24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">📍 Buffalo RiverWorks &nbsp;·&nbsp; Buffalo, NY</span><br />\n    <a href=\"https://buffaloriverworks.com/summer-music-series/\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#ffffff;color:#D4A200;font-size:16px;font-weight:700;padding:14px 40px;border-radius:8px;text-decoration:none;margin-top:8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;touch-action:manipulation;\">☀️ View Full Summer Lineup</a>\n  </div>\n<p>  <!-- DETAIL CARDS --></p>\n<table style=\"width:100%;border-collapse:separate;border-spacing:10px;margin-bottom:6px;table-layout:fixed;\">\n<tr>\n<td style=\"background:#D4A200;border-radius:10px;padding:16px 14px;vertical-align:top;\">\n<div style=\"font-size:22px;margin-bottom:6px;\">📅</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Date</div>\n<div style=\"font-size:13px;font-weight:700;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Saturday<br />August 22nd</div>\n</td>\n<td style=\"background:#D4A200;border-radius:10px;padding:16px 14px;vertical-align:top;\">\n<div style=\"font-size:22px;margin-bottom:6px;\">⏰</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Music Starts</div>\n<div style=\"font-size:15px;font-weight:700;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">5:00 PM</div>\n</td>\n<td style=\"background:#D4A200;border-radius:10px;padding:16px 14px;vertical-align:top;\">\n<div style=\"font-size:22px;margin-bottom:6px;\">🎶</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Music Ends</div>\n<div style=\"font-size:15px;font-weight:700;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">8:00 PM</div>\n</td>\n<td style=\"background:#D4A200;border-radius:10px;padding:16px 14px;vertical-align:top;\">\n<div style=\"font-size:22px;margin-bottom:6px;\">🎉</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Admission</div>\n<div style=\"font-size:13px;font-weight:700;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Free · All Ages</div>\n</td>\n</tr>\n</table>\n<p>  <!-- LINEUP BOX --></p>\n<div style=\"background:#ffffff;border:2px solid #e0e0e0;border-radius:10px;margin:16px 0;overflow:hidden;\">\n<div style=\"padding:14px 18px;border-bottom:2px solid #e0e0e0;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#888888;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🎤 On the RiverBarge Stage</div>\n<table style=\"width:100%;border-collapse:collapse;\">\n<tr>\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Gregg Sansone</td>\n<td style=\"padding:14px 18px;text-align:right;\"><span style=\"font-size:11px;font-weight:700;background:#fdf8e0;color:#7a5800;padding:4px 14px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🎵 Live Music</span></td>\n</tr>\n</table></div>\n<p>  <!-- CONTEXT BOX --></p>\n<div style=\"background:#fdf8e0;border:2px solid #e8d080;border-radius:10px;margin:16px 0;padding:20px 22px;\">\n<p style=\"font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D4A200;margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">☀️ About The Summer Series</p>\n<p style=\"font-size:17px;font-weight:800;color:#111111;margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">An Iconic Summer on the Buffalo River</p>\n<p style=\"font-size:14px;color:#333333;line-height:1.75;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Who&#8217;s ready for another iconic summer on the Buffalo River? Kiss the summer hello with The Summer Concert Series, bringing live music back to our RiverBarge Stage and waterfront beer garden all summer long. Enjoy live, local music while sipping ice-cold drinks from the Tiki Bar, gathering around the fire pits, and taking in some of the best waterfront views in Buffalo. Free and all ages every week!</p>\n</p></div>\n<p>  <!-- AGE + SCHEDULE LINK --></p>\n<table style=\"width:100%;border-collapse:collapse;background:#f8f8f8;border:2px solid #e0e0e0;border-radius:10px;margin:16px 0;\">\n<tr>\n<td style=\"padding:16px 18px;font-size:15px;font-weight:600;color:#444444;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🪪 Free Admission · All Ages Welcome</td>\n<td style=\"padding:16px 18px;text-align:right;\"><a href=\"https://buffaloriverworks.com/summer-music-series/\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#D4A200;color:#ffffff;font-size:14px;font-weight:700;padding:11px 28px;border-radius:8px;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;touch-action:manipulation;\">📅 Full Schedule</a></td>\n</tr>\n</table>\n<p>  <!-- GOOD TO KNOW ACCORDION --></p>\n<div style=\"border:2px solid #D4A200;border-radius:10px;margin:16px 0;overflow:hidden;\">\n<div id=\"ss822-gtk-header\" role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"ss822gtkBody\" onclick=\"var b=document.getElementById('ss822gtkBody');var open=b.style.maxHeight!=='0px'&#038;&#038;b.style.maxHeight!=='';b.style.maxHeight=open?'0px':'3000px';document.getElementById('ss822gtkArrow').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"background-color:#D4A200;padding:18px 22px;cursor:pointer;line-height:1.4;overflow:hidden;touch-action:manipulation;\">\n      <span style=\"font-size:17px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">ℹ️ &nbsp;Good to Know Before You Go</span><br />\n      <span id=\"ss822gtkArrow\" style=\"font-size:18px;color:#ffffff;float:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#9660;</span></p>\n<div style=\"clear:both;\"></div>\n</p></div>\n<div id=\"ss822gtkBody\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.4s ease;background:#ffffff;\">\n<p>      <!-- FAQ 1: Parking --></p>\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"ss822a1\" onclick=\"var a=document.getElementById('ss822a1');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('ss822rr1').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;\">\n          <span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🅿️ &nbsp;Where do I park?</span><br />\n          <span id=\"ss822rr1\" style=\"font-size:14px;color:#aaaaaa;float:right;\">&#9660;</span></p>\n<div style=\"clear:both;\"></div>\n</p></div>\n<div id=\"ss822a1\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Parking is available in the main lot at Buffalo RiverWorks on Ganson St. Arriving early is always a good idea. Additional street parking is available nearby.</p>\n</p></div>\n</p></div>\n<p>      <!-- FAQ 2: Is it really free? --></p>\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"ss822a2\" onclick=\"var a=document.getElementById('ss822a2');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('ss822rr2').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;\">\n          <span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🎟️ &nbsp;Is admission really free?</span><br />\n          <span id=\"ss822rr2\" style=\"font-size:14px;color:#aaaaaa;float:right;\">&#9660;</span></p>\n<div style=\"clear:both;\"></div>\n</p></div>\n<div id=\"ss822a2\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Yes! The Summer Concert Series is completely <strong>free admission</strong>. No tickets, no reservations needed — just show up and enjoy. All ages are welcome every week.</p>\n</p></div>\n</p></div>\n<p>      <!-- FAQ 3: Re-entry --></p>\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"ss822a3\" onclick=\"var a=document.getElementById('ss822a3');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('ss822rr3').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;\">\n          <span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🚫 &nbsp;Is re-entry allowed?</span><br />\n          <span id=\"ss822rr3\" style=\"font-size:14px;color:#aaaaaa;float:right;\">&#9660;</span></p>\n<div style=\"clear:both;\"></div>\n</p></div>\n<div id=\"ss822a3\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><strong>No re-entry.</strong> Once you leave the venue, you will not be permitted back in. Plan accordingly!</p>\n</p></div>\n</p></div>\n<p>      <!-- FAQ 4: Bag policy --></p>\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"ss822a4\" onclick=\"var a=document.getElementById('ss822a4');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('ss822rr4').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;\">\n          <span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🎒 &nbsp;What&#8217;s the bag policy?</span><br />\n          <span id=\"ss822rr4\" style=\"font-size:14px;color:#aaaaaa;float:right;\">&#9660;</span></p>\n<div style=\"clear:both;\"></div>\n</p></div>\n<div id=\"ss822a4\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><strong>Large bags and backpacks are not permitted.</strong> All personal items are subject to security search at the door. Travel light!</p>\n</p></div>\n</p></div>\n<p>      <!-- FAQ 5: Smoking --></p>\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"ss822a5\" onclick=\"var a=document.getElementById('ss822a5');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('ss822rr5').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;\">\n          <span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🚬 &nbsp;Smoking &amp; vaping policy</span><br />\n          <span id=\"ss822rr5\" style=\"font-size:14px;color:#aaaaaa;float:right;\">&#9660;</span></p>\n<div style=\"clear:both;\"></div>\n</p></div>\n<div id=\"ss822a5\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Smoking and vaping are <strong>strictly prohibited indoors</strong> per New York State law. A designated outdoor smoking area is at the rear of the building.</p>\n</p></div>\n</p></div>\n<p>      <!-- FAQ 6: Photos --></p>\n<div style=\"background:#ffffff;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"ss822a6\" onclick=\"var a=document.getElementById('ss822a6');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('ss822rr6').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;\">\n          <span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">📸 &nbsp;Can I take photos or record?</span><br />\n          <span id=\"ss822rr6\" style=\"font-size:14px;color:#aaaaaa;float:right;\">&#9660;</span></p>\n<div style=\"clear:both;\"></div>\n</p></div>\n<div id=\"ss822a6\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Photography and video are generally welcome — be respectful of other guests and the performers. Check with venue staff on the night of the event for any specific artist rules.</p>\n</p></div>\n</p></div>\n<p>      <!-- Footer link --></p>\n<div style=\"background:#f8f8f8;border-top:2px solid #e0e0e0;padding:14px 18px;text-align:center;\">\n        <a href=\"https://buffaloriverworks.com/summer-music-series/\" target=\"_blank\" rel=\"noopener\" style=\"font-size:13px;color:#D4A200;text-decoration:none;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#8599; View full summer schedule at buffaloriverworks.com</a>\n      </div>\n</p></div>\n</p></div>\n</div>\n<p><!-- END RW-EVENT: THE SUMMER SERIES — GREGG SANSONE --></p>",
-      "excerpt": "",
-      "slug": "gregg-sansone-2",
-      "image": {
-        "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic.png",
-        "id": 30028,
-        "extension": "png",
-        "width": 1200,
-        "height": 628,
-        "filesize": 987557,
-        "sizes": {
-          "medium": {
-            "width": 300,
-            "height": 157,
-            "mime-type": "image/png",
-            "filesize": 97204,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-300x157.png"
-          },
-          "large": {
-            "width": 1030,
-            "height": 539,
-            "mime-type": "image/png",
-            "filesize": 821607,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-1030x539.png"
-          },
-          "thumbnail": {
-            "width": 80,
-            "height": 80,
-            "mime-type": "image/png",
-            "filesize": 15320,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-80x80.png"
-          },
-          "medium_large": {
-            "width": 768,
-            "height": 402,
-            "mime-type": "image/png",
-            "filesize": 501861,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-768x402.png"
-          },
-          "shop_thumbnail": {
-            "width": 120,
-            "height": 120,
-            "mime-type": "image/png",
-            "filesize": 32017,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-120x120.png"
-          },
-          "shop_catalog": {
-            "width": 450,
-            "height": 450,
-            "mime-type": "image/png",
-            "filesize": 322806,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-450x450.png"
-          },
-          "shop_single": {
-            "width": 450,
-            "height": 236,
-            "mime-type": "image/png",
-            "filesize": 199186,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-450x236.png"
-          },
-          "depicter-thumbnail": {
-            "width": 200,
-            "height": 105,
-            "mime-type": "image/png",
-            "filesize": 46626,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-200x105.png"
-          },
-          "cfw_cart_thumb": {
-            "width": 60,
-            "height": 31,
-            "mime-type": "image/png",
-            "filesize": 5000,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-60x31.png"
-          },
-          "cfw_trust_badge_thumb": {
-            "width": 110,
-            "height": 58,
-            "mime-type": "image/png",
-            "filesize": 15629,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-110x58.png"
-          },
-          "woocommerce_thumbnail": {
-            "width": 300,
-            "height": 300,
-            "mime-type": "image/png",
-            "filesize": 161744,
-            "uncropped": false,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-300x300.png"
-          },
-          "woocommerce_single": {
-            "width": 600,
-            "height": 314,
-            "mime-type": "image/png",
-            "filesize": 335246,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-600x314.png"
-          },
-          "woocommerce_gallery_thumbnail": {
-            "width": 100,
-            "height": 100,
-            "mime-type": "image/png",
-            "filesize": 22986,
-            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/06/The-Summer-Series-Header-pic-100x100.png"
-          }
-        }
-      },
-      "all_day": false,
-      "start_date": "2026-08-22 17:00:00",
-      "start_date_details": {
-        "year": "2026",
-        "month": "08",
-        "day": "22",
-        "hour": "17",
-        "minutes": "00",
-        "seconds": "00"
-      },
-      "end_date": "2026-08-22 20:00:00",
-      "end_date_details": {
-        "year": "2026",
-        "month": "08",
-        "day": "22",
-        "hour": "20",
-        "minutes": "00",
-        "seconds": "00"
-      },
-      "utc_start_date": "2026-08-22 21:00:00",
-      "utc_start_date_details": {
-        "year": "2026",
-        "month": "08",
-        "day": "22",
-        "hour": "21",
-        "minutes": "00",
-        "seconds": "00"
-      },
-      "utc_end_date": "2026-08-23 00:00:00",
-      "utc_end_date_details": {
-        "year": "2026",
-        "month": "08",
-        "day": "23",
-        "hour": "00",
-        "minutes": "00",
-        "seconds": "00"
-      },
-      "timezone": "America/New_York",
-      "timezone_abbr": "EDT",
-      "cost": "",
-      "cost_details": {
-        "currency_symbol": "$",
-        "currency_code": "USD",
-        "currency_position": "prefix",
-        "values": []
-      },
-      "website": "",
-      "show_map": true,
-      "show_map_link": true,
-      "hide_from_listings": false,
-      "sticky": false,
-      "featured": false,
-      "categories": [
-        {
-          "name": "Live Music",
-          "slug": "live-music",
-          "term_group": 0,
-          "term_taxonomy_id": 86,
-          "taxonomy": "tribe_events_cat",
-          "description": "",
-          "parent": 0,
-          "count": 32,
-          "filter": "raw",
-          "id": 86,
-          "urls": {
-            "self": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories/86",
-            "collection": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories"
-          }
-        }
-      ],
-      "tags": [],
-      "venue": [],
-      "organizer": [],
-      "custom_fields": [],
-      "is_virtual": false,
-      "virtual_url": null,
-      "virtual_video_source": ""
     }
   ],
   "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=25&start_date=2026-07-25 00:00:00&end_date=2028-07-25 23:59:59&status=publish",
   "next_rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?per_page=25&start_date=2026-07-25+00%3A00%3A00&end_date=2028-07-25+23%3A59%3A59&status=publish&page=2",
-  "total": 48,
+  "total": 49,
   "total_pages": 2,
-  "generated_at": "2026-07-25T04:07:52Z"
+  "generated_at": "2026-07-25T20:09:29Z"
 }
