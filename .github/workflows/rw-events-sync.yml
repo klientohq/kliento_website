@@ -22,26 +22,84 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch RiverWorks events API (retry; keep last good on challenge)
+      - name: Fetch RiverWorks events API (paginated; retry; keep last good on challenge)
         run: |
           START_DATE=$(TZ=America/New_York date +%F)
-          URL="https://buffaloriverworks.com/wp-json/tribe/events/v1/events?per_page=25&status=publish&start_date=${START_DATE}"
+          # 2026-07-25: per_page was 25 while the venue publishes ~49 upcoming events, and
+          # total_pages was ignored — so page 2 never reached the mirror and Sarah told
+          # callers that real, ticketed shows (Mastodon, Black Label Society, Thundercat,
+          # PickleFest) simply were not happening.
+          # 2026-07-28: raising per_page to a bigger magic number just moves the ceiling.
+          # We now FOLLOW total_pages and merge every page, so the mirror cannot truncate
+          # no matter how many events the venue publishes. PER_PAGE is only a page size.
+          PER_PAGE=100
+          BASE="https://buffaloriverworks.com/wp-json/tribe/events/v1/events"
           UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-          EVENTS_OK=no
-          for attempt in 1 2 3 4 5 6 7 8; do
-            HTTP_STATUS=$(curl -sS -L -c cookies.txt -b cookies.txt -o response.json -w '%{http_code}' -H "User-Agent: ${UA}" -H "Accept: application/json" "$URL" || echo "000")
-            echo "Attempt ${attempt}: HTTP ${HTTP_STATUS}"
-            if [ "$HTTP_STATUS" = "200" ] && jq -e '.events' response.json > /dev/null 2>&1; then
-              EVENTS_OK=yes
-              break
-            fi
-            grep -qi 'sgcaptcha' response.json 2>/dev/null && echo "  (sgcaptcha challenge — will retry with cookie jar)"
-            sleep $((15 + attempt * 10))
-          done
+
+          # fetch_page <page-number> <outfile> -> "yes"/"no" on stdout
+          fetch_page() {
+            local PAGE="$1" OUT="$2" OK=no STATUS
+            local URL="${BASE}?per_page=${PER_PAGE}&status=publish&start_date=${START_DATE}&page=${PAGE}"
+            for attempt in 1 2 3 4 5 6 7 8; do
+              STATUS=$(curl -sS -L -c cookies.txt -b cookies.txt -o "$OUT" -w '%{http_code}' \
+                        -H "User-Agent: ${UA}" -H "Accept: application/json" "$URL" || echo "000")
+              echo "  page ${PAGE} attempt ${attempt}: HTTP ${STATUS}" >&2
+              if [ "$STATUS" = "200" ] && jq -e '.events' "$OUT" > /dev/null 2>&1; then
+                OK=yes
+                break
+              fi
+              grep -qi 'sgcaptcha' "$OUT" 2>/dev/null && echo "    (sgcaptcha challenge — retrying with cookie jar)" >&2
+              sleep $((15 + attempt * 10))
+            done
+            echo "$OK"
+          }
+
+          EVENTS_OK=$(fetch_page 1 page-1.json)
           mkdir -p data
+
           if [ "$EVENTS_OK" = "yes" ]; then
-            jq --arg t "$(date -u +%FT%TZ)" '. + {generated_at:$t}' response.json > data/rw-events.json
-            echo "Events refreshed: $(jq '.events | length' data/rw-events.json) events"
+            TOTAL_PAGES=$(jq -r '.total_pages // 1' page-1.json)
+            TOTAL=$(jq -r '.total // 0' page-1.json)
+            echo "Venue reports ${TOTAL} published upcoming events across ${TOTAL_PAGES} page(s)"
+            cp page-1.json merged.json
+            PAGES_OK=yes
+            PAGE=2
+            while [ "$PAGE" -le "$TOTAL_PAGES" ] 2>/dev/null; do
+              if [ "$(fetch_page "$PAGE" "page-${PAGE}.json")" = "yes" ]; then
+                jq -s '.[0] * {events: (.[0].events + .[1].events)}' merged.json "page-${PAGE}.json" > merged-next.json
+                mv merged-next.json merged.json
+              else
+                echo "::warning::Could not fetch events page ${PAGE} after retries — mirror will be marked incomplete."
+                PAGES_OK=no
+              fi
+              PAGE=$((PAGE + 1))
+            done
+
+            GOT=$(jq '.events | length' merged.json)
+            # Deduplicate by event id (page boundaries can repeat an item if the venue
+            # publishes something mid-fetch) and re-sort soonest-first.
+            jq '.events |= (unique_by(.id) | sort_by(.utc_start_date // .start_date))' merged.json > merged-clean.json
+            mv merged-clean.json merged.json
+            GOT=$(jq '.events | length' merged.json)
+
+            COMPLETE=true
+            if [ "$PAGES_OK" != "yes" ]; then COMPLETE=false; fi
+            if [ "$TOTAL" -gt "$GOT" ] 2>/dev/null; then COMPLETE=false; fi
+
+            # `complete` is consumed by Sarah's "Format Events Result" n8n node. When it is
+            # false she must NOT claim the list covers everything published — that exact
+            # false completeness claim is what made her deny real ticketed shows.
+            jq --arg t "$(date -u +%FT%TZ)" --argjson c "$COMPLETE" --argjson got "$GOT" \
+               '. + {generated_at:$t, complete:$c, captured:$got}' merged.json > data/rw-events.json
+
+            echo "Events refreshed: ${GOT} captured of ${TOTAL} published (complete=${COMPLETE})"
+            if [ "$COMPLETE" != "true" ]; then
+              # Warn, but STILL COMMIT. A fresh-but-partial mirror that admits it is partial
+              # beats a frozen one: exiting here previously skipped the commit step entirely,
+              # so the mirror silently stopped updating and then rotted into the 48h alarm.
+              echo "::warning::Events mirror INCOMPLETE — captured ${GOT} of ${TOTAL}. Committing anyway with complete=false so Sarah discloses it."
+            fi
+            rm -f page-*.json merged.json
           else
             echo "WARNING: events API challenged/unreachable after retries — keeping last-good data/rw-events.json"
             # Keep-last-good is fine for a day, but a mirror stale >48h must fail LOUD once
@@ -57,7 +115,7 @@ jobs:
               fi
             fi
           fi
-          rm -f response.json cookies.txt
+          rm -f page-*.json merged.json merged-next.json merged-clean.json cookies.txt
 
       - name: Fetch RiverWorks homepage (mirror for Sarah fetch_website; keep last good on challenge)
         run: |
