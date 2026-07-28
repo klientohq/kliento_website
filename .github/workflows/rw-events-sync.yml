@@ -3,9 +3,13 @@ name: RW Events Sync
 on:
   workflow_dispatch:
   schedule:
-    # Every 6 hours (01/07/13/19 UTC = 9PM/3AM/9AM/3PM ET during EDT). sgcaptcha
-    # challenges are intermittent, so 4 windows/day makes a stale mirror very unlikely.
-    - cron: '0 1,7,13,19 * * *'
+    # Every 2 hours. Was every 6h (01/07/13/19 UTC), but GitHub's scheduler runs
+    # public-repo crons late under load — observed 2h18m and 2h35m behind on
+    # 2026-07-28 — so the real worst-case gap was ~8.5h, not 6h. A newly posted
+    # event could sit invisible to Sarah for most of a business day. Runs are free
+    # (public repo) and commit only when the data actually changed, so 12 windows
+    # a day costs nothing and bounds the worst case at roughly 4-5h.
+    - cron: '0 */2 * * *'
 
 # Cost: this repo is PUBLIC, so GitHub Actions minutes are unlimited & free ($0).
 # Design: the workflow NEVER fails. If the venue's SiteGround/sgcaptcha challenges a
