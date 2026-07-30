@@ -10602,7 +10602,7 @@
   "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2026-07-30 00:00:00&end_date=2028-07-30 23:59:59&status=publish",
   "total": 46,
   "total_pages": 1,
-  "generated_at": "2026-07-30T13:41:34Z",
+  "generated_at": "2026-07-30T15:46:33Z",
   "complete": true,
   "captured": 46
 }
