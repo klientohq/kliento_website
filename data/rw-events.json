@@ -197,7 +197,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -462,7 +462,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -738,7 +738,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -1199,7 +1199,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -3956,7 +3956,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -4625,7 +4625,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -5708,7 +5708,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -5982,7 +5982,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -6224,7 +6224,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -7196,7 +7196,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -7438,7 +7438,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -8154,7 +8154,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 3,
+          "count": 4,
           "filter": "raw",
           "id": 102,
           "urls": {
@@ -8202,7 +8202,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 1,
+          "count": 2,
           "filter": "raw",
           "id": 101,
           "urls": {
@@ -8719,7 +8719,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 74,
+          "count": 75,
           "filter": "raw",
           "id": 48,
           "urls": {
@@ -8794,12 +8794,284 @@
       "is_virtual": false,
       "virtual_url": null,
       "virtual_video_source": ""
+    },
+    {
+      "id": 30908,
+      "global_id": "buffaloriverworks.com?id=30908",
+      "global_id_lineage": [
+        "buffaloriverworks.com?id=30908"
+      ],
+      "author": "29",
+      "status": "publish",
+      "date": "2026-08-07 21:43:28",
+      "date_utc": "2026-08-08 01:43:28",
+      "modified": "2026-08-07 21:43:28",
+      "modified_utc": "2026-08-08 01:43:28",
+      "url": "https://buffaloriverworks.com/event/snow-glow-silent-disco-at-buffalo-riverworks/",
+      "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/30908",
+      "title": "Snow GLOW Silent Disco at Buffalo RiverWorks",
+      "description": "<p><!-- RW-EVENT: SNOW GLOW SILENT DISCO @ BUFFALO RIVERWORKS - DECEMBER 4, 2026 --></p>\n<div style=\"max-width:700px;margin:0 auto;padding:0;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;\">\n<div style=\"background:linear-gradient(135deg,#080427 0%,#1b1063 38%,#3a1a8f 64%,#0b0633 100%);border-radius:12px;padding:48px 32px 40px;text-align:center;margin-bottom:16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<p style=\"font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(236,242,255,0.86);margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🎧 SE2 Silent Disco &amp; Buffalo RiverWorks Present</p>\n<h2 style=\"font-size:52px;font-weight:800;color:#ffffff;margin:0 0 4px;line-height:1.04;text-shadow:0 0 26px rgba(56,214,255,0.55);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">SNOW GLOW</h2>\n<p style=\"font-size:22px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#38d6ff;margin:0 0 12px;text-shadow:0 0 18px rgba(255,79,216,0.45);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Silent Disco</p>\n<p style=\"font-size:15px;color:rgba(236,242,255,0.92);margin:0 0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Friday, December 4, 2026 &nbsp;·&nbsp; 8:00 PM – 12:00 AM &nbsp;·&nbsp; 21+</p>\n<p><span style=\"display:inline-block;background:rgba(0,0,0,0.32);border:1px solid rgba(56,214,255,0.35);border-radius:999px;padding:6px 20px;font-size:13px;color:rgba(236,242,255,0.94);margin-bottom:24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">📍 Buffalo RiverWorks &nbsp;·&nbsp; Buffalo, NY</span><br />\n<a href=\"https://www.eventbrite.com/e/snow-glow-silent-disco-at-buffalo-riverworks-12426-tickets-1996102500312\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#38d6ff;color:#080427;font-size:16px;font-weight:800;padding:14px 40px;border-radius:8px;text-decoration:none;margin-top:8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;touch-action:manipulation;box-shadow:0 8px 22px rgba(56,214,255,0.35);\">🎟️ Get Tickets</a>\n</div>\n<table style=\"width:100%;border-collapse:separate;border-spacing:10px;margin-bottom:6px;table-layout:fixed;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<tbody>\n<tr>\n<td style=\"background:#1c1256;border-radius:10px;padding:16px 14px;vertical-align:top;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div style=\"font-size:22px;margin-bottom:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">📅</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(236,242,255,0.7);margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Date</div>\n<div style=\"font-size:15px;font-weight:700;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Fri, Dec. 4, 2026</div>\n</td>\n<td style=\"background:#1c1256;border-radius:10px;padding:16px 14px;vertical-align:top;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div style=\"font-size:22px;margin-bottom:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🚪</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(236,242,255,0.7);margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Doors Open</div>\n<div style=\"font-size:15px;font-weight:700;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">8:00 PM</div>\n</td>\n<td style=\"background:#1c1256;border-radius:10px;padding:16px 14px;vertical-align:top;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div style=\"font-size:22px;margin-bottom:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🌙</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(236,242,255,0.7);margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Event Ends</div>\n<div style=\"font-size:15px;font-weight:700;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">12:00 AM</div>\n</td>\n<td style=\"background:#1c1256;border-radius:10px;padding:16px 14px;vertical-align:top;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div style=\"font-size:22px;margin-bottom:6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">📍</div>\n<div style=\"font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(236,242,255,0.7);margin-bottom:5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Venue</div>\n<div style=\"font-size:15px;font-weight:700;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Buffalo RiverWorks</div>\n</td>\n</tr>\n</tbody>\n</table>\n<div style=\"background:#ffffff;border:2px solid #d5cbf2;border-radius:10px;margin:16px 0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div style=\"padding:14px 18px;border-bottom:2px solid #ece7fa;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2a1670;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🎟️ Ticket Pricing</div>\n<table style=\"width:100%;border-collapse:collapse;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<tbody>\n<tr style=\"border-bottom:1px solid #f0f0f0;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Pre-Sale</td>\n<td style=\"padding:14px 18px;text-align:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><span style=\"font-size:12px;font-weight:800;background:#e8f9ff;color:#0d5b74;padding:4px 16px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">$20</span></td>\n</tr>\n<tr style=\"border-bottom:1px solid #f0f0f0;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Early Bird</td>\n<td style=\"padding:14px 18px;text-align:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><span style=\"font-size:12px;font-weight:800;background:#f3ecff;color:#4a1e8f;padding:4px 16px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">$25</span></td>\n</tr>\n<tr style=\"border-bottom:1px solid #f0f0f0;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">General Admission</td>\n<td style=\"padding:14px 18px;text-align:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><span style=\"font-size:12px;font-weight:800;background:#ffeaf9;color:#8a1069;padding:4px 16px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">$30</span></td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"padding:12px 18px;background:#faf7ff;font-size:13px;color:#4a1e8f;font-weight:700;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Tiers sell out in order — Eventbrite fees are added at checkout.</td>\n</tr>\n</tbody>\n</table>\n</div>\n<div style=\"background:#f7f4ff;border:2px solid #ded3f7;border-radius:10px;margin:16px 0;padding:20px 22px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<p style=\"font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4a1e8f;margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">❄️ About the Night</p>\n<p style=\"font-size:17px;font-weight:800;color:#111111;margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">A winter GLOW party where everything glows — including you.</p>\n<p style=\"font-size:14px;color:#333333;line-height:1.75;margin:0 0 10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Buffalo RiverWorks turns into a blacklight snow globe for <strong>Snow GLOW Silent Disco</strong>. Everyone gets a set of wireless LED headphones, and instead of one sound system there are <strong>three DJs broadcasting at once</strong> — switch channels whenever you want and watch the room light up in whichever color you are listening to.</p>\n<p style=\"font-size:14px;color:#333333;line-height:1.75;margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Professional lighting production, custom UV decorations, and four straight hours of dancing. <strong>21+ with ID</strong> — an ID is required for the headphone rental.</p>\n</div>\n<div style=\"background:#ffffff;border:2px solid #d5cbf2;border-radius:10px;margin:16px 0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div style=\"padding:14px 18px;border-bottom:2px solid #ece7fa;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2a1670;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🎧 Three Channels — You Pick, Anytime</div>\n<table style=\"width:100%;border-collapse:collapse;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<tbody>\n<tr style=\"border-bottom:1px solid #f0f0f0;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Top 40 &amp; Throwback Hits</td>\n<td style=\"padding:14px 18px;text-align:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><span style=\"font-size:11px;font-weight:800;background:#e6ffe9;color:#166b23;padding:4px 16px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">GREEN CHANNEL</span></td>\n</tr>\n<tr style=\"border-bottom:1px solid #f0f0f0;\">\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Hip Hop / R&amp;B</td>\n<td style=\"padding:14px 18px;text-align:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><span style=\"font-size:11px;font-weight:800;background:#ffe9e9;color:#a01414;padding:4px 16px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">RED CHANNEL</span></td>\n</tr>\n<tr>\n<td style=\"padding:14px 18px;font-size:16px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Electronic Dance Music</td>\n<td style=\"padding:14px 18px;text-align:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><span style=\"font-size:11px;font-weight:800;background:#e8f4ff;color:#12518f;padding:4px 16px;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">BLUE CHANNEL</span></td>\n</tr>\n</tbody>\n</table>\n</div>\n<table style=\"width:100%;border-collapse:collapse;background:#f8f8f8;border:2px solid #e0e0e0;border-radius:10px;margin:16px 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<tbody>\n<tr>\n<td style=\"padding:20px 22px;width:100%;font-size:20px;font-weight:700;color:#30343b;line-height:1.4;vertical-align:middle;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🪪 21+ to Enter<br /><span style=\"font-size:13px;font-weight:600;color:#5b6068;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">ID Required for Headphone Rental&nbsp;·&nbsp;Headphones Included With Every Ticket</span></td>\n<td style=\"padding:16px 18px;text-align:right;white-space:nowrap;vertical-align:middle;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><a href=\"https://www.eventbrite.com/e/snow-glow-silent-disco-at-buffalo-riverworks-12426-tickets-1996102500312\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#38d6ff;color:#080427;font-size:14px;font-weight:800;padding:11px 28px;border-radius:8px;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;touch-action:manipulation;box-shadow:0 8px 18px rgba(56,214,255,0.3);\">🎟️ Buy Tickets</a></td>\n</tr>\n</tbody>\n</table>\n<table style=\"width:100%;border-collapse:collapse;background:#f7f4ff;border:2px solid #ded3f7;border-radius:10px;margin:16px 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<tbody>\n<tr>\n<td style=\"padding:20px 22px;width:100%;font-size:16px;font-weight:700;color:#2a1670;line-height:1.5;vertical-align:middle;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">🎉 Want a silent disco at your own party?<br /><span style=\"font-size:13px;font-weight:600;color:#5a4a86;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">SE2 Silent Disco offers party packages and headphone rentals.</span></td>\n<td style=\"padding:16px 18px;text-align:right;white-space:nowrap;vertical-align:middle;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"><a href=\"https://www.se2.events/packages\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#ffffff;color:#4a1e8f;border:2px solid #4a1e8f;font-size:14px;font-weight:800;padding:9px 24px;border-radius:8px;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;touch-action:manipulation;\">Party Packages</a></td>\n</tr>\n</tbody>\n</table>\n<div style=\"border:2px solid #2a1670;border-radius:10px;margin:16px 0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div id=\"sd1204-gtk-header\" role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"sd1204gtkBody\" onclick=\"var b=document.getElementById('sd1204gtkBody');var open=b.style.maxHeight!=='0px'&#038;&#038;b.style.maxHeight!=='';b.style.maxHeight=open?'0px':'3000px';document.getElementById('sd1204gtkArrow').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"background-color:#2a1670;padding:18px 22px;cursor:pointer;line-height:1.4;overflow:hidden;touch-action:manipulation;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<span style=\"font-size:17px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">ℹ️ &nbsp;Good to Know Before You Go</span><br />\n<span id=\"sd1204gtkArrow\" style=\"font-size:18px;color:#ffffff;float:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#9660;</span></p>\n<div style=\"clear:both;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"></div>\n</div>\n<div id=\"sd1204gtkBody\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.4s ease;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"sd1204a1\" onclick=\"var a=document.getElementById('sd1204a1');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('sd1204q1').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🎧 &nbsp;What exactly is a silent disco?</span><br />\n<span id=\"sd1204q1\" style=\"font-size:14px;color:#aaaaaa;float:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#9660;</span></p>\n<div style=\"clear:both;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"></div>\n</div>\n<div id=\"sd1204a1\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Instead of speakers, everyone dances in wireless LED headphones. Three DJs broadcast at the same time and you switch between them whenever you like — so the room is packed and loud on the headphones, and almost quiet without them.</p>\n</div>\n</div>\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"sd1204a2\" onclick=\"var a=document.getElementById('sd1204a2');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('sd1204q2').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🎫 &nbsp;Are headphones included with my ticket?</span><br />\n<span id=\"sd1204q2\" style=\"font-size:14px;color:#aaaaaa;float:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#9660;</span></p>\n<div style=\"clear:both;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"></div>\n</div>\n<div id=\"sd1204a2\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Yes. Your ticket covers entry, all three channels of music, and a sanitized set of wireless headphones for the night. <strong>A valid ID is required for the headphone rental.</strong></p>\n</div>\n</div>\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"sd1204a3\" onclick=\"var a=document.getElementById('sd1204a3');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('sd1204q3').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🪪 &nbsp;What is the age policy?</span><br />\n<span id=\"sd1204q3\" style=\"font-size:14px;color:#aaaaaa;float:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#9660;</span></p>\n<div style=\"clear:both;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"></div>\n</div>\n<div id=\"sd1204a3\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">This is a <strong>21+ event</strong>. Bring a valid government-issued photo ID — it is checked at the door and again at headphone pickup.</p>\n</div>\n</div>\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"sd1204a4\" onclick=\"var a=document.getElementById('sd1204a4');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('sd1204q4').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">👕 &nbsp;What should I wear?</span><br />\n<span id=\"sd1204q4\" style=\"font-size:14px;color:#aaaaaa;float:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#9660;</span></p>\n<div style=\"clear:both;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"></div>\n</div>\n<div id=\"sd1204a4\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Wear white or neon — the room runs on UV blacklight, so light colors glow and dark colors disappear. Comfortable shoes: this is four hours of dancing.</p>\n</div>\n</div>\n<div style=\"border-bottom:1px solid #eeeeee;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"sd1204a5\" onclick=\"var a=document.getElementById('sd1204a5');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('sd1204q5').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🚗 &nbsp;Where do I park?</span><br />\n<span id=\"sd1204q5\" style=\"font-size:14px;color:#aaaaaa;float:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#9660;</span></p>\n<div style=\"clear:both;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"></div>\n</div>\n<div id=\"sd1204a5\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Parking is available on site at Buffalo RiverWorks, 359 Ganson Street, Buffalo, NY 14203. Arrive early on winter weekends — the lot fills up.</p>\n</div>\n</div>\n<div style=\"background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<div role=\"button\" tabindex=\"0\" aria-expanded=\"false\" aria-controls=\"sd1204a6\" onclick=\"var a=document.getElementById('sd1204a6');var open=a.style.maxHeight!=='0px'&#038;&#038;a.style.maxHeight!=='';a.style.maxHeight=open?'0px':'3000px';document.getElementById('sd1204q6').innerHTML=open?'&#9660;':'&#9650;';this.setAttribute('aria-expanded',open?'false':'true');\" onkeydown=\"if(event.key==='Enter'||event.key===' '){this.click();event.preventDefault();}\" style=\"padding:15px 20px;cursor:pointer;background:#ffffff;overflow:hidden;touch-action:manipulation;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<span style=\"font-size:14px;font-weight:700;color:#111111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;float:left;\">🎉 &nbsp;Can I book a silent disco for my own event?</span><br />\n<span id=\"sd1204q6\" style=\"font-size:14px;color:#aaaaaa;float:right;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#9660;</span></p>\n<div style=\"clear:both;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\"></div>\n</div>\n<div id=\"sd1204a6\" style=\"max-height:0px;overflow:hidden;transition:max-height 0.3s ease;background:#f9f9f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<p style=\"margin:0;padding:14px 20px 16px 20px;font-size:14px;color:#333333;line-height:1.7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">Yes. SE2 Silent Disco handles party packages and headphone-only rentals — see <a href=\"https://www.se2.events/packages\" target=\"_blank\" rel=\"noopener\" style=\"color:#4a1e8f;font-weight:700;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;touch-action:manipulation;\">se2.events/packages</a> or <a href=\"https://www.se2.events/rentals\" target=\"_blank\" rel=\"noopener\" style=\"color:#4a1e8f;font-weight:700;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;touch-action:manipulation;\">se2.events/rentals</a>.</p>\n</div>\n</div>\n<div style=\"background:#f8f8f8;border-top:2px solid #e0e0e0;padding:14px 18px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">\n<a href=\"https://buffaloriverworks.com/concert-questions/\" target=\"_blank\" rel=\"noopener\" style=\"font-size:13px;color:#2a1670;text-decoration:none;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;\">&#8599; View all event FAQs at buffaloriverworks.com</a>\n</div>\n</div>\n</div>\n</div>\n<p><!-- END RW-EVENT --></p>",
+      "excerpt": "",
+      "slug": "snow-glow-silent-disco-at-buffalo-riverworks",
+      "image": {
+        "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026.jpg",
+        "id": 30907,
+        "extension": "jpg",
+        "width": 2160,
+        "height": 1080,
+        "filesize": 293629,
+        "sizes": {
+          "medium": {
+            "width": 300,
+            "height": 150,
+            "mime-type": "image/jpeg",
+            "filesize": 33539,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-300x150.jpg"
+          },
+          "large": {
+            "width": 1030,
+            "height": 515,
+            "mime-type": "image/jpeg",
+            "filesize": 204015,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-1030x515.jpg"
+          },
+          "thumbnail": {
+            "width": 80,
+            "height": 80,
+            "mime-type": "image/jpeg",
+            "filesize": 6502,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-80x80.jpg"
+          },
+          "medium_large": {
+            "width": 768,
+            "height": 384,
+            "mime-type": "image/jpeg",
+            "filesize": 134079,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-768x384.jpg"
+          },
+          "1536x1536": {
+            "width": 1536,
+            "height": 768,
+            "mime-type": "image/jpeg",
+            "filesize": 357500,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-1536x768.jpg"
+          },
+          "2048x2048": {
+            "width": 2048,
+            "height": 1024,
+            "mime-type": "image/jpeg",
+            "filesize": 542413,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-2048x1024.jpg"
+          },
+          "shop_thumbnail": {
+            "width": 120,
+            "height": 120,
+            "mime-type": "image/jpeg",
+            "filesize": 12726,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-120x120.jpg"
+          },
+          "shop_catalog": {
+            "width": 450,
+            "height": 450,
+            "mime-type": "image/jpeg",
+            "filesize": 102734,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-450x450.jpg"
+          },
+          "shop_single": {
+            "width": 450,
+            "height": 225,
+            "mime-type": "image/jpeg",
+            "filesize": 62271,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-450x225.jpg"
+          },
+          "depicter-thumbnail": {
+            "width": 200,
+            "height": 100,
+            "mime-type": "image/jpeg",
+            "filesize": 17170,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-200x100.jpg"
+          },
+          "cfw_cart_thumb": {
+            "width": 60,
+            "height": 30,
+            "mime-type": "image/jpeg",
+            "filesize": 2303,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-60x30.jpg"
+          },
+          "cfw_trust_badge_thumb": {
+            "width": 110,
+            "height": 55,
+            "mime-type": "image/jpeg",
+            "filesize": 6208,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-110x55.jpg"
+          },
+          "woocommerce_thumbnail": {
+            "width": 300,
+            "height": 300,
+            "mime-type": "image/jpeg",
+            "filesize": 56631,
+            "uncropped": false,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-300x300.jpg"
+          },
+          "woocommerce_single": {
+            "width": 600,
+            "height": 300,
+            "mime-type": "image/jpeg",
+            "filesize": 95096,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-600x300.jpg"
+          },
+          "woocommerce_gallery_thumbnail": {
+            "width": 100,
+            "height": 100,
+            "mime-type": "image/jpeg",
+            "filesize": 9807,
+            "url": "https://buffaloriverworks.com/wp-content/uploads/2026/08/snow-glow-silent-disco-2026-100x100.jpg"
+          }
+        }
+      },
+      "all_day": false,
+      "start_date": "2026-12-04 20:00:00",
+      "start_date_details": {
+        "year": "2026",
+        "month": "12",
+        "day": "04",
+        "hour": "20",
+        "minutes": "00",
+        "seconds": "00"
+      },
+      "end_date": "2026-12-05 00:00:00",
+      "end_date_details": {
+        "year": "2026",
+        "month": "12",
+        "day": "05",
+        "hour": "00",
+        "minutes": "00",
+        "seconds": "00"
+      },
+      "utc_start_date": "2026-12-05 01:00:00",
+      "utc_start_date_details": {
+        "year": "2026",
+        "month": "12",
+        "day": "05",
+        "hour": "01",
+        "minutes": "00",
+        "seconds": "00"
+      },
+      "utc_end_date": "2026-12-05 05:00:00",
+      "utc_end_date_details": {
+        "year": "2026",
+        "month": "12",
+        "day": "05",
+        "hour": "05",
+        "minutes": "00",
+        "seconds": "00"
+      },
+      "timezone": "America/New_York",
+      "timezone_abbr": "EST",
+      "cost": "",
+      "cost_details": {
+        "currency_symbol": "",
+        "currency_code": "",
+        "currency_position": "",
+        "values": []
+      },
+      "website": "https://buffaloriverworks.com/event/snow-glow-silent-disco-at-buffalo-riverworks/",
+      "show_map": false,
+      "show_map_link": false,
+      "hide_from_listings": false,
+      "sticky": false,
+      "featured": false,
+      "categories": [
+        {
+          "name": "Events for Adults in Buffalo",
+          "slug": "events-for-adults-in-buffalo",
+          "term_group": 0,
+          "term_taxonomy_id": 102,
+          "taxonomy": "tribe_events_cat",
+          "description": "",
+          "parent": 0,
+          "count": 4,
+          "filter": "raw",
+          "id": 102,
+          "urls": {
+            "self": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories/102",
+            "collection": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories"
+          }
+        },
+        {
+          "name": "Party",
+          "slug": "party",
+          "term_group": 0,
+          "term_taxonomy_id": 101,
+          "taxonomy": "tribe_events_cat",
+          "description": "",
+          "parent": 0,
+          "count": 2,
+          "filter": "raw",
+          "id": 101,
+          "urls": {
+            "self": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories/101",
+            "collection": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories"
+          }
+        },
+        {
+          "name": "RW Events",
+          "slug": "rw-events",
+          "term_group": 0,
+          "term_taxonomy_id": 48,
+          "taxonomy": "tribe_events_cat",
+          "description": "",
+          "parent": 0,
+          "count": 75,
+          "filter": "raw",
+          "id": 48,
+          "urls": {
+            "self": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories/48",
+            "collection": "https://buffaloriverworks.com/wp-json/tribe/events/v1/categories"
+          }
+        }
+      ],
+      "tags": [],
+      "venue": {
+        "id": 4833,
+        "author": "1",
+        "status": "publish",
+        "date": "2017-03-19 17:19:53",
+        "date_utc": "2017-03-19 22:19:53",
+        "modified": "2025-10-28 03:56:12",
+        "modified_utc": "2025-10-28 07:56:12",
+        "url": "https://buffaloriverworks.com/venue/buffalo-riverworks/",
+        "venue": "Buffalo Riverworks",
+        "description": "<div style=\"display: none;\">Buffalo RiverWorks est un lieu unique qui offre une fusion intemporelle d&#8217;activités, de divertissements et de vues imprenables sur le front de mer. Abritant diverses ligues sportives, des parcours d&#8217;accrobranche urbains, plusieurs bars et restaurants, et même un silo à grains transformé en le plus grand du monde, RiverWorks offre un cadre unique à tous les amateurs de divertissement.</p>\n<p>Idéalement situé sur les rives de la rivière Buffalo, ce lieu magnifique invite à l&#8217;exploration. Tout comme sur <a href=\"https://casino.actionclimat.ca/\">https://casino.actionclimat.ca/</a>, vous pourrez vivre une montée d&#8217;adrénaline en participant à des activités captivantes ou vous détendre et admirer le paysage pittoresque du port.</p>\n<p>Similaire aux sensations fortes et à l&#8217;exaltation des plateformes de jeux en ligne comme Asino, Buffalo RiverWorks déborde de vie et d&#8217;effervescence. Bien que différents par nature, les deux sites partagent le même objectif : offrir une expérience inoubliable qui vous donnera envie de revenir.</p>\n<p>Que vous préfériez jouer au blackjack sur Asino ou faire du rafting à Buffalo RiverWorks, tous deux ont le charme et l&#8217;attrait qui vous accueilleront toujours et répondront à vos envies de divertissement et de sensations fortes. À RiverWorks, il se passe toujours quelque chose d&#8217;amusant, tout comme il y a toujours un nouveau jeu qui vous attend au Casino Action Climat. Avec un large éventail d&#8217;activités disponibles, RiverWorks s&#8217;est imposé comme un haut lieu du divertissement à Buffalo, vous offrant une expérience palpitante à chaque fois. Venez découvrir nos offres et faites de chaque visite une aventure mémorable.</p></div>",
+        "slug": "buffalo-riverworks",
+        "address": "359 Ganson Street",
+        "city": "Buffalo",
+        "country": "United States",
+        "state": "NY",
+        "zip": "14203",
+        "phone": "844.SIX.CANS",
+        "website": "https://buffaloriverworks.com/",
+        "stateprovince": "NY",
+        "geo_lat": 42.8699170000000009395080269314348697662353515625,
+        "geo_lng": -78.87263799999999491774360649287700653076171875,
+        "show_map": true,
+        "show_map_link": true,
+        "global_id": "buffaloriverworks.com?id=4833",
+        "global_id_lineage": [
+          "buffaloriverworks.com?id=4833"
+        ]
+      },
+      "organizer": [],
+      "custom_fields": [],
+      "is_virtual": false,
+      "virtual_url": null,
+      "virtual_video_source": ""
     }
   ],
-  "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2026-08-07 00:00:00&end_date=2028-08-07 23:59:59&status=publish",
-  "total": 38,
+  "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2026-08-07 00:00:00&end_date=2028-08-08 23:59:59&status=publish",
+  "total": 39,
   "total_pages": 1,
-  "generated_at": "2026-08-07T20:32:17Z",
+  "generated_at": "2026-08-08T03:17:48Z",
   "complete": true,
-  "captured": 38
+  "captured": 39
 }
