@@ -185,6 +185,9 @@
       launcherLabel: "Ask RiverWorks",
       logoUrl: "/widget/assets/riverworks-chat-icon.png",
       launcherLogoUrl: "/widget/assets/riverworks-chat-icon.png",
+      // v7 resolves the three header avatars against assetBaseUrl, which
+      // otherwise defaults to the script's own directory (/widget/) and 404s.
+      assetBaseUrl: "/widget/assets/",
       accentColor: "#d31145",
       accentColor2: "#9c0c30",
       footerText: "Powered by Kliento",
@@ -199,7 +202,7 @@
       poweredByFooter: true
     };
   </script>
-  <script src="/widget/kliento-widget.js?v=6.6"></script>
+  <script src="/widget/kliento-widget.js?v=7.0"></script>
 
 </body>
 </html>
