@@ -8561,10 +8561,10 @@
       "virtual_video_source": ""
     }
   ],
-  "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2026-08-15 00:00:00&end_date=2028-08-15 23:59:59&status=publish",
+  "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2026-08-15 00:00:00&end_date=2028-08-16 23:59:59&status=publish",
   "total": 36,
   "total_pages": 1,
-  "generated_at": "2026-08-15T18:17:30Z",
+  "generated_at": "2026-08-16T00:50:52Z",
   "complete": true,
   "captured": 36
 }
