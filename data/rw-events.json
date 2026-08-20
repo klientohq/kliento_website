@@ -181,7 +181,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -379,7 +379,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -851,7 +851,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -1494,7 +1494,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -1934,7 +1934,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -2603,7 +2603,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -3103,7 +3103,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -3301,7 +3301,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -4047,7 +4047,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -4531,7 +4531,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -6799,7 +6799,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -7332,7 +7332,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 23,
+          "count": 22,
           "filter": "raw",
           "id": 86,
           "urls": {
@@ -7697,10 +7697,10 @@
       "virtual_video_source": ""
     }
   ],
-  "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2026-08-19 00:00:00&end_date=2028-08-20 23:59:59&status=publish",
+  "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2026-08-20 00:00:00&end_date=2028-08-20 23:59:59&status=publish",
   "total": 32,
   "total_pages": 1,
-  "generated_at": "2026-08-20T02:50:20Z",
+  "generated_at": "2026-08-20T06:31:48Z",
   "complete": true,
   "captured": 32
 }
