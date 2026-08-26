@@ -181,7 +181,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 10,
+          "count": 9,
           "filter": "raw",
           "id": 43,
           "urls": {
@@ -4209,7 +4209,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 10,
+          "count": 9,
           "filter": "raw",
           "id": 43,
           "urls": {
@@ -4977,7 +4977,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 10,
+          "count": 9,
           "filter": "raw",
           "id": 43,
           "urls": {
@@ -6238,7 +6238,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 10,
+          "count": 9,
           "filter": "raw",
           "id": 43,
           "urls": {
@@ -7264,7 +7264,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 10,
+          "count": 9,
           "filter": "raw",
           "id": 43,
           "urls": {
@@ -7486,7 +7486,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 10,
+          "count": 9,
           "filter": "raw",
           "id": 43,
           "urls": {
@@ -7790,7 +7790,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 10,
+          "count": 9,
           "filter": "raw",
           "id": 43,
           "urls": {
@@ -8035,7 +8035,7 @@
           "taxonomy": "tribe_events_cat",
           "description": "",
           "parent": 0,
-          "count": 10,
+          "count": 9,
           "filter": "raw",
           "id": 43,
           "urls": {
@@ -8419,7 +8419,7 @@
   "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2026-08-26 00:00:00&end_date=2028-08-26 23:59:59&status=publish",
   "total": 34,
   "total_pages": 1,
-  "generated_at": "2026-08-26T04:32:12Z",
+  "generated_at": "2026-08-26T12:35:17Z",
   "complete": true,
   "captured": 34
 }
