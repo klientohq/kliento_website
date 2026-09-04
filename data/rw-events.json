@@ -6934,7 +6934,7 @@
   "rest_url": "https://buffaloriverworks.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2026-09-04 00:00:00&end_date=2028-09-04 23:59:59&status=publish",
   "total": 27,
   "total_pages": 1,
-  "generated_at": "2026-09-04T08:21:22Z",
+  "generated_at": "2026-09-04T13:54:39Z",
   "complete": true,
   "captured": 27
 }
